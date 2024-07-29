@@ -23,12 +23,12 @@ Azure is Microsoft's cloud platform, allowing you to use powerful computers over
 
 - **Scalability**: Easily scale resources up or down based on demand.
 - **Flexibility**: Supports various programming languages, frameworks, and operating systems.
-- **Global Reach**: Azure has data centers in multiple regions around the world, providing low-latency access and compliance with local regulations.
+- **Global Reach**: Azure has data centres in multiple regions around the world, providing low-latency access and compliance with local regulations.
 - **Security**: Azure offers robust security features, including advanced threat protection, encryption, and compliance certifications, ensuring your data and applications are secure.
 - **Cost Efficiency**: Azure provides a pay-as-you-go pricing model, allowing you to optimize costs by only paying for the resources you use. Additionally, Azure offers various cost management tools to monitor and control expenses.
 - **Reliability**: With a strong service level agreement (SLA), Azure ensures high availability and uptime for your applications, minimizing downtime and business disruptions.
 - **Innovation**: Azure continuously evolves, offering cutting-edge technologies such as artificial intelligence, machine learning, and Internet of Things (IoT) services to drive innovation and competitive advantage.
-- **Hybrid Capability**: Azure supports hybrid cloud scenarios, allowing you to integrate on-premises data centers with the cloud, providing flexibility and control over your IT environment.
+- **Hybrid Capability**: Azure supports hybrid cloud scenarios, allowing you to integrate on-premises data centres with the cloud, providing flexibility and control over your IT environment.
 - **Developer Productivity**: Azure offers a comprehensive set of development tools, including Visual Studio, Azure DevOps, and GitHub integration, enabling developers to build, deploy, and manage applications efficiently.
 
 ### Drawbacks
@@ -38,7 +38,7 @@ Azure is Microsoft's cloud platform, allowing you to use powerful computers over
 
 ### Use Case
 
-Both startups and large companies use Azure to build and run their applications because it can easily grow with their needs.
+Both start-ups and large companies use Azure to build and run their applications because it can easily grow with their needs.
 
 ---
 
@@ -125,7 +125,7 @@ Any manageable item in Azure, such as virtual machines, databases, or web apps.
 
 ## Manage subscription
 ### Subscription 
-subscription allows us to use a service based on a fee. It alllow us to use the service on an on-demand basis, and they ask for payment monthly basis and also they only ask what-ever service we have used.
+subscription allows us to use a service based on a fee. It allow us to use the service on an on-demand basis, and they ask for payment monthly basis and also they only ask what-ever service we have used.
 After creating an account on azure portal we get 
 1) Free trail and 
 2) Azure Active directory
@@ -134,30 +134,30 @@ Without subscription we can't create any resource.
 
 There are different types of subscriptions.
 1) Free trail
-2) visual studio yearly subscription: where we get visual studio free credis every month
+2) visual studio yearly subscription: where we get visual studio free credits every month
 3) Pay as you go :
 
 ## Subscription permission level
 When we create an azure account, we get three level of permission in azure.
-1) **Account Administratior**: When we create an azure account we get 1 Account Administratior Per account.
+1) **Account Administrator**: When we create an azure account we get 1 Account Administrator Per account.
 It manage all the subscription in an account
 It create new subscription
-it can cencel subscription
+it can cancel subscription
 He can change the billing for a subscription
 He can change the service administrator.
 
-2) **Service administrator**: When we create an subscription, we can get 1 Service Administratior Per subscription.
+2) **Service administrator**: When we create an subscription, we can get 1 Service Administrator Per subscription.
 Manage services in azure portal
-Assign users to the co-administartor role.
+Assign users to the co-Administrator role.
 
-2) **Co-administartor**: When we create an subscription service administartor can create 200 co-administartor rolethe access will be same like service administrator but he can't change the role of Service administrator.
+2) **Co-Administrator**: When we create an subscription service Administrator can create 200 co-Administrator role the access will be same like service administrator but he can't change the role of Service administrator.
 
 ## Management group
-when we create multiple subscription we use management group to manage multiple subscrption.
-We can go Management group and we can add multiple suscription for multiple company.
+when we create multiple subscription we use management group to manage multiple subscription.
+We can go Management group and we can add multiple subscription for multiple company.
 
-Now let us say you have a product company and it is growing very well after a certain duration you aquire your competetior and he is also running an azure account so we can transfer that subscription one account.
-**Benifits of Management group**
+Now let us say you have a product company and it is growing very well after a certain duration you acquire your competitor and he is also running an azure account so we can transfer that subscription one account.
+**Benefits of Management group**
 using Management group we can manage company(Management group) level cost and azure policy(like change wallpaper or change password).
 
 ### Azure Resource Manager (ARM)
@@ -169,15 +169,15 @@ using Management group we can manage company(Management group) level cost and az
 
 ## Components of Azure Architecture
 
-### Data Centers
+### Data centres
 These are massive warehouses where Azure stores data and runs applications for users. Think of them like giant storage facilities for digital information.
 
 ### Regions
-Azure divides the world into regions, much like how continents divide the Earth. Each region contains multiple data centers. These regions help Azure users choose where they want their data and applications to be located for optimal performance and compliance with local laws.
+Azure divides the world into regions, much like how continents divide the Earth. Each region contains multiple data centres. These regions help Azure users choose where they want their data and applications to be located for optimal performance and compliance with local laws.
 **Example**: Similar to how different countries have their own rules and regulations, Azure regions ensure that data stays within legal boundaries and operates efficiently across the globe.
 
 ### Availability Zones
-Within each region, there are availability zones, similar to neighborhoods in a city. Each zone has its own infrastructure, providing redundancy and ensuring high availability of services.
+Within each region, there are availability zones, similar to neighbourhoods in a city. Each zone has its own infrastructure, providing redundancy and ensuring high availability of services.
 
 Availability zones provide redundancy and ensure that if one zone goes down (due to maintenance or other issues), the services in other zones remain unaffected.
 

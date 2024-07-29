@@ -9,10 +9,10 @@
 
 ## Azure Storage
 Azure Storage is a cloud-based storage solution provided by Microsoft Azure. It offers a variety of storage services that can be used to store and manage large amounts of data.
-### Genrally Azure storage used in three category
+### Generally Azure storage used in three category
 1) Storage for virtual machine (virtual machine disks and files)
-2) Unstructured data (blobs and datalake stores)
-3) Structured Data (table sql cosmos db)
+2) Unstructured data (blobs and DATALAKE stores)
+3) Structured Data (table SQL cosmos DB)
 
 ## Blob Storage
 Azure Blob Storage is a service that allows you to store and serve large amounts of unstructured data, such as text or binary files. It is commonly used for storing and serving static website content. 
@@ -43,27 +43,27 @@ There are two performance tiers available for Azure Blob Storage and Azure File 
 1) Are backed up by HDD (Magnetic drives)
 2) Lowest cost per GB
 3) Best for applications that require bulk storage
-4) Data is accessed infrequently (means high letancy)
+4) Data is accessed infrequently (means high latency)
 
 2. **Premium**: This performance tier offers higher performance and lower latency compared to the Standard tier. It is designed for high-performance workloads that require low latency and high throughput.
 1) Are backed up by SSD
-2) Offer consistent low letancy performance
+2) Offer consistent low latency performance
 3) Use with Azure Virtual machine disks
-4) Best for i/o intensive application like database
+4) Best for I/O intensive application like database
 
 For Azure Queue Storage and Azure Table Storage, there is only one performance tier available, which is the **Standard** tier.
 
 ## Azure Storage kinds
 
-### Genral pupose V1
-Legacy account type for blobs, files and queues and tables. Try to use genral pupose V2 accounts becuase in this account may not have all the latest feature.
+### General purpose V1
+Legacy account type for blobs, files and queues and tables. Try to use General purpose V2 accounts because in this account may not have all the latest feature.
 1) It supports service only like Blob, File, Queue, Table and disk.
-2) It doesnot support any access like HOT and Cool.
+2) It does not support any access like HOT and Cool.
 3) It supports only replication like LRS, GRS, RA- GRS.
 4) It supports both standard and premium performance tier.
 
-### Genral pupose V2
-Both basic and latest acount type for blob, files, queues and tables. Recomonded for most senario using azure storage and microsoft also recommend to use this type of account.
+### General purpose V2
+Both basic and latest account type for blob, files, queues and tables. Recommended for most scenario using azure storage and Microsoft also recommend to use this type of account.
 1) It supports services like Blobs, files Queue, table , disk and Data Lake Gen 2
 2) It supports any access like HOT, Cool and Archive.
 3) It supports replication like LRS, GRS, RA-GRS, ZRS, GZRS, RA-GZRS 
@@ -137,13 +137,13 @@ We have three categories in blob
 
 1) **Block Blob**
 when we store any file, video and image it will be saved as "Block Blob"
-It store text and binary data, Block blob are block of data that can be managed indivisually.
+It store text and binary data, Block blob are block of data that can be managed individually.
 
 2) **Page Blob**
-It store randome access files up to 8 TB in size. Page blobs stores Virtual hard drive (VHD) files and serve as disks for virtual machines.
+It store random access files up to 8 TB in size. Page blobs stores Virtual hard drive (VHD) files and serve as disks for virtual machines.
 
 3) **Append Blob**
-Append blob are made up of blocks like block blobs, but are optimized for append operations. Append blobs are ideal for senarios such as logging data from VM.
+Append blob are made up of blocks like block blobs, but are optimized for append operations. Append blobs are ideal for scenarios such as logging data from VM.
 
 
 ## Storage Replication
@@ -153,15 +153,15 @@ Azure Storage Replication refers to the different options available for replicat
 Azure provides several redundancy options to ensure data availability and durability. Here are the different redundancy options explained:
 
 ### Locally Redundant Storage (LRS)
-LRS replicates your data three times within a single data center in a region. This ensures data durability by keeping multiple copies, but it does not protect against data center-level failures.
+LRS replicates your data three times within a single data centre in a region. This ensures data durability by keeping multiple copies, but it does not protect against data centre-level failures.
 
-- **Use case**: Cost-effective redundancy within a single data center.
-- **Data replication**: 3 copies in one data center.
+- **Use case**: Cost-effective redundancy within a single data centre.
+- **Data replication**: 3 copies in one data centre.
 
 ### Zone-Redundant Storage (ZRS)
 ZRS replicates your data synchronously across three Azure availability zones within a region. This provides higher durability and availability compared to LRS.
 
-- **Use case**: Protect against data center-level failures within a region.
+- **Use case**: Protect against data centre-level failures within a region.
 - **Data replication**: Synchronous replication across 3 availability zones.
 
 ### Geo-Redundant Storage (GRS)
@@ -179,7 +179,7 @@ RA-GRS provides the same replication as GRS but with read access to the data in 
 ### Geo-Zone-Redundant Storage (GZRS)
 GZRS combines the benefits of ZRS and GRS. It synchronously replicates your data across three availability zones in the primary region and asynchronously replicates it to a secondary region.
 
-- **Use case**: High availability and durability with protection against both data center and regional failures.
+- **Use case**: High availability and durability with protection against both data centre and regional failures.
 - **Data replication**: Synchronous replication across 3 availability zones and asynchronous replication to a secondary region, 6 copies in total.
 
 ### Read-Access Geo-Zone-Redundant Storage (RA-GZRS)
