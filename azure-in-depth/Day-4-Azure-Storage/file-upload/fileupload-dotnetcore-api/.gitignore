@@ -1,0 +1,56 @@
+# .NET Core
+bin/
+obj/
+
+# Visual Studio Code
+.vscode/
+
+# NuGet
+*.nuget.props
+*.nuget.targets
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio
+VisualStudio/
+.vs/
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+ipch/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+[Bb]uild[Ww]rapper/
+[Nn]bbuild/
+[Ll]ib/
+[Ii]ntermediate/
+[Ss]tationery/
+[Tt]est[Rr]esults/
+[Bb]uild[Dd]b/
+[Rr]elease[Dd]b/
+_ReSharper*/
+[Tt]est[Rr]esult*/
+*.VisualState.xml
+_buildlogs/

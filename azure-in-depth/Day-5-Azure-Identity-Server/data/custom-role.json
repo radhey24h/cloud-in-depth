@@ -1,0 +1,14 @@
+{
+    "Name": "democustomrole",
+    "Id": null,
+    "IsCustom": true,
+    "Description": "Allows read access to Azure Virtual Machines and storage accounts",
+    "Actions": [
+        "Microsoft.Compute/*/read",
+        "Microsoft.Storage/*/read"
+    ],
+    "NotActions": [],
+    "AssignableScopes": [
+        "/subscriptions/728c7905-eebf-4052-ba79-8db90dc18631"
+    ]
+}
