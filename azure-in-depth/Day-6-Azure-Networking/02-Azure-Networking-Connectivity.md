@@ -86,6 +86,10 @@ Connect two VNets in the same region to allow secure communication between resou
    - SSH or RDP into the VM in `VNet1`.
    - Ping the IP address of the VM in `VNet2` to verify connectivity.
 
+```
+
+```
+
 ## Scenario 2: Global VNet Peering (Different Regions)
 
 ### Objective
