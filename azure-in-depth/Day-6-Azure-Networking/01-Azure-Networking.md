@@ -10,6 +10,8 @@ VNets are created at the subscription level, within a specific resource group an
 
 When you create multiple resources (e.g., VMs) within a single VNet, they can communicate with each other using private IP addresses without needing internet access or VNet peering. If you create resources in different VNets, they can communicate using private IPs after establishing VNet peering.
 
+Microsoft doesn't charge for VNet, they always charge for inbound/outbound traffic.
+
 ## Key Features
 
 - **Isolation**: VNets provide network isolation, allowing you to separate resources and control traffic flow within your virtual network.
@@ -65,13 +67,40 @@ az network vnet create \
     --subnet-prefixes 10.0.0.0/24
 ```
 
-## DDOS Protection
+## DDOS (distributed denial of service) Protection
 Azure DDoS protection, combined with application design best practices, provides defence against DDoS attacks. Azure DDoS protection offers basic and standard tier services with some feature differences.
+
+### Use Case: E-Commerce Website
+
+**Scenario:** Imagine you run an online shopping site. During a big sale, lots of people visit your site at the same time, causing a huge spike in traffic. This could crash your site, similar to a DDoS attack, where the goal is to overwhelm your servers.
+
+**Solution:**  
+Azure DDoS Protection steps in to help. It automatically handles the extra traffic, making sure real customers can shop without any issues while blocking any malicious traffic. This way, your site stays up and running, and customers can enjoy their shopping experience without disruptions.
 
 ## FireWall
 Azure Firewall is a managed cloud-based network security service that protects your Azure virtual network resources. It allows you to create, enforce, and log application and network connectivity policies across subscriptions and virtual networks. 
 
 If you need more flexibility than NSGs provide, or if you want a more powerful solution without using third-party services, Azure Firewall is a suitable option.
 
+### Use Case: Financial Institution
+
+**Scenario:** Consider a bank that has several applications on Azure. Each app needs to be very secure because they handle sensitive financial information.
+
+**Solution:**  
+Azure Firewall is used to keep everything safe. It acts like a security guard for your network, watching all the data coming in and going out. You can set rules about who can access what, ensuring only trusted users can see confidential information. This makes managing security easier and helps keep customer data safe, complying with all necessary regulations.
+
 ## Service endpoints
 Service endpoints allow you to secure your critical Azure resources to your virtual networks. They provide access to PaaS services like Azure Storage, SQL Database, MySQL, Key Vault, and App Services, directly from within your VNet.
+
+### Use Case: Healthcare Application
+
+**Scenario:** Think of a healthcare provider that stores patient records on Azure. This data is very sensitive and needs to be protected from unauthorized access.
+
+**Solution:**  
+Service Endpoints are used to make sure that the data can only be accessed from within the provider’s own Azure network. It’s like having a private, secure road that only authorized users can travel on to reach the data. This keeps patient information safe and helps the healthcare provider meet privacy and security regulations.
+
+# Lab - Creation of virtual network
+**Step 1**: All Services-> Virtual Network->Add+
+**Step 2**: Name (VNet1)-> Address Space (10.0.0.0/8)-> Subscription (free trial) -> Resource Group (Create New) -> Location (US-West)-> Subnet Name (VNet1-subnet1)-> Address Range (10.0.0.0/16)-> DDOS Protection  (Basic) -> Service end Point (disable) -> Firewall (disable) -> Create
+
+
