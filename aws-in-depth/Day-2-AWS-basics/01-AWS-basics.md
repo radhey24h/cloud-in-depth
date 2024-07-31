@@ -21,12 +21,12 @@ Azure is Microsoft's cloud platform, allowing you to use powerful computers over
 
 - **Scalability**: Easily scale resources up or down based on demand.
 - **Flexibility**: Supports various programming languages, frameworks, and operating systems.
-- **Global Reach**: AWS has data centers in multiple regions around the world, providing low-latency access and compliance with local regulations.
+- **Global Reach**: AWS has data centres in multiple regions around the world, providing low-latency access and compliance with local regulations.
 - **Security**: AWS offers robust security features, including advanced threat protection, encryption, and compliance certifications, ensuring your data and applications are secure.
 - **Cost Efficiency**: AWS provides a pay-as-you-go pricing model, allowing you to optimize costs by only paying for the resources you use. Additionally, AWS offers various cost management tools to monitor and control expenses.
 - **Reliability**: With a strong service level agreement (SLA), AWS ensures high availability and uptime for your applications, minimizing downtime and business disruptions.
 - **Innovation**: AWS continuously evolves, offering cutting-edge technologies such as artificial intelligence, machine learning, and Internet of Things (IoT) services to drive innovation and competitive advantage.
-- **Hybrid Capability**: AWS supports hybrid cloud scenarios, allowing you to integrate on-premises data centers with the cloud, providing flexibility and control over your IT environment.
+- **Hybrid Capability**: AWS supports hybrid cloud scenarios, allowing you to integrate on-premises data centres with the cloud, providing flexibility and control over your IT environment.
 - **Developer Productivity**: AWS offers a comprehensive set of development tools, including Visual Studio, AWS DevOps, and GitHub integration, enabling developers to build, deploy, and manage applications efficiently.
 
 ### Drawbacks
@@ -36,7 +36,7 @@ Azure is Microsoft's cloud platform, allowing you to use powerful computers over
 
 ### Use Case
 
-Both startups and large companies use AWS to build and run their applications because it can easily grow with their needs.
+Both start-ups and large companies use AWS to build and run their applications because it can easily grow with their needs.
 
 ---
 
