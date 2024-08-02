@@ -6,7 +6,7 @@ AWS Serverless services allow you to build and run applications without managing
 The AWS Serverless architecture includes several key components that work together to build scalable and resilient applications:
 
 ### 1. AWS Lambda
-   - **Description:** AWS Lambda is a compute service that lets you run code without provisioning or managing servers. You can trigger Lambda functions in response to various events such as changes in data, system state, or user actions.
+   - **Description:** AWS Lambda is a Event driven compute service that lets you run code without provisioning or managing servers. You can trigger Lambda functions in response to various events such as changes in data, system state, or user actions.
    - **Architecture:** 
      - **Event Sources:** AWS Lambda can be triggered by events from services like S3, DynamoDB, SNS, SQS, and API Gateway.
      - **Execution Environment:** Executes your code in a managed environment with resources like memory, CPU, and temporary storage.
