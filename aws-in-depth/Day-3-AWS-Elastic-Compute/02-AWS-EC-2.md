@@ -1,10 +1,43 @@
 # Amazon Elastic Compute Cloud (EC2)
 
-Amazon Elastic Compute Cloud (EC2) is a scalable virtual server service provided by Amazon Web Services (AWS). It allows users to run virtual machines (VMs) on-demand, providing flexible computing capacity in the cloud.
+Amazon Elastic Compute Cloud (EC2) provides scalable computing capacity in the AWS cloud. We can use EC2 to launch as many as vertical server as we need, we can also configure security and manage storage as per need.
+
+EC2 have two storage option EBS and Instance store. It has also preconfigured template are available that we known as Amazon Machine Image.
+
+By Default, when we create an EC2 Account with AWS, our account is limited to a maximum of 20 instance per EC2 region with default high I/O instances.
+
+## Types of EC2 instances
+General purpose instance, Compute optimized, memory optimized, storage optimized, Accelerated computing or GPU, High memory instances, previous generation instances.
+**General purpose instance-** it provides a balance of compute, memory and networking resources and can be used verity of workloads
+
+**In general purpose 3 Series are available -** A series(A1), M series (M4, M5, M5A, M5AD, M5D), T series (T2(T2 micro Free tier), T3, T3A)
+
+In general purpose instances available in four sizes- nano, small, medium, large.
+
+A series Medium and large size, M Series have only large size and T series have all the four size.
+**A1 Instances –** Ideally suited for scale out workloads that are supported by the ARM Ecosystem.
+A1 Instances are well suited for following applications-
+Web Server, Containerized Micro services, Caching Fleets, Distributed data stores, Application that requires ARM instruction set.
+**M4 Instances –** used for high computational tasks
+vCPU- 2 to 40 (max), RAM 8 to 160 GB(max), instance storage EBS(elastic block store) only for root volume.
+**M5 Instances –** used for high computational tasks and it provides an ideal and balanced cloud environment.
+vCPU- 2 to 96 (max), RAM 8 to 384 GB(max), instance storage EBS and NVMe SSD or nitro VM SSD.
+
+EC2 Instance Purchasing options-
+
+  1) On Demand 
+  2) Dedicated instance
+  3) Dedicated Host
+  4) Spot instance
+  5) Schedule Instance
+  6) Reserved Instance
+
+But mainly there are three way to pay for amazon EC2 instances i.e. On-Demand, Reserved instance and Spot Instances.
+## EC2 Access-
+To access instances, we need to a key and key pair name, we can download private key only once. The public key is saved by AWS to match it to the pair name and private key when you try to login to the EC2 instances. Without key pair we can’t access instance via RDP or SSH.
+There is 20 EC2 instances (soft limit) per account in a region, we can submit a request to increase it. 
 
 ## EC2 Architecture
-
-Amazon EC2 architecture consists of several key components that enable scalable and reliable computing resources.
 
 ### 1. EC2 Instances
    - **Description:** Virtual servers that run applications and services. Instances can be launched with various configurations based on CPU, memory, storage, and networking requirements.

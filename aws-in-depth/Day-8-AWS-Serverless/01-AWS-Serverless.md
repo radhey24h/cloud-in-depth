@@ -1,9 +1,8 @@
 # AWS Serverless
 
-AWS Serverless services allow you to build and run applications without managing servers. With serverless computing, you can focus on writing code and configuring services, while AWS handles the infrastructure management. This document provides an in-depth overview of key AWS serverless components, including architecture, use cases, billing details, and relevant commands and code snippets.
+AWS Serverless services allow you to build and run applications without managing servers. With serverless computing, you can focus on writing code and configuring services, while AWS handles the infrastructure management. 
 
 ## AWS Serverless Architecture
-
 The AWS Serverless architecture includes several key components that work together to build scalable and resilient applications:
 
 ### 1. AWS Lambda
@@ -14,13 +13,13 @@ The AWS Serverless architecture includes several key components that work togeth
    - **Use Case:** A company wants to process uploaded images in real-time. AWS Lambda can be triggered by S3 events to process images and store results in a database.
    - **Billing Details:** Charges are based on the number of requests and the duration of code execution. Costs include memory allocation, execution time, and the number of requests.
    - **Commands:**
-     ```bash
+```bash
      # Create a Lambda function
      aws lambda create-function --function-name MyFunction --runtime nodejs14.x --role arn:aws:iam::account-id:role/lambda-role --handler index.handler --zip-file fileb://function.zip
 
      # Invoke a Lambda function
      aws lambda invoke --function-name MyFunction output.json
-     ```
+  ```
 
 ### 2. Amazon API Gateway
    - **Description:** Amazon API Gateway is a fully managed service for creating and publishing APIs. It provides a front door for applications to access data, business logic, or functionality from backend services.

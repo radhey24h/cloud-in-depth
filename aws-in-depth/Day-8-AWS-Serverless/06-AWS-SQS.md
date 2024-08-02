@@ -1,6 +1,32 @@
-# AWS Simple Queue Service (SQS)
+# AWS SQS (Amazon Simple Queue Service)
 
-AWS Simple Queue Service (SQS) is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. It allows you to send, store, and receive messages between software components at any volume.
+AWS SQS (Amazon Simple Queue Service) is a fully managed message queuing service that enables users to decouple and scale microservices, distributed systems, and serverless applications. It helps manage and operate message-oriented middleware, allowing developers to focus on their core work.
+
+Amazon SQS handles the message delivery reliably at any scale without requiring other services to be always available. It supports sending, storing, and receiving messages between software components and can be accessed through various tools such as the Amazon Console, command line interface, and SDKs.
+
+## Types of Queues in Amazon SQS
+
+### Standard Queue
+
+- **Description**: Standard queues offer at least once delivery and maximum throughput. They support a high volume of transactions per second per API action.
+- **Characteristics**:
+  - **Delivery**: Guarantees at least one delivery of each message, but may deliver multiple copies of a message.
+  - **Order**: Messages may be delivered in a different order than they were sent.
+  - **Throughput**: Supports a high number of transactions per second.
+
+### FIFO Queue
+
+- **Description**: FIFO (First-In-First-Out) queues guarantee that messages are processed exactly once and in the exact order they are sent.
+- **Characteristics**:
+  - **Order**: Messages are strictly preserved in the order they are sent and received.
+  - **Throughput**: Can handle up to 300 messages per second, including 300 send, receive, and delete operations per second.
+  - **Duplication**: Messages are not duplicated and are retained until explicitly deleted by the customer.
+
+## Key Features
+
+- **Reliable Message Delivery**: Ensures that messages are delivered without loss.
+- **Scalability**: Can handle any volume of messages and scale as needed.
+- **Flexible Access**: Integrates with various tools including the Amazon Console, CLI, and SDKs.
 
 ## Architecture
 

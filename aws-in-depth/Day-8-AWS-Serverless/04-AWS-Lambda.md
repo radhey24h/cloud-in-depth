@@ -1,6 +1,117 @@
 # AWS Lambda
 
-AWS Lambda is a serverless compute service that lets you run code without provisioning or managing servers. You only pay for the compute time you consume, and you don't have to manage any infrastructure. This document provides an in-depth overview of AWS Lambda, including its architecture, use cases, billing details, commands, and code snippets.
+AWS Lambda is an event-driven compute service that lets you run your code without provisioning or managing servers. It allows you to run backend services with zero administration.
+
+## Key Features of AWS Lambda
+
+- **Managed Service**: AWS Lambda handles provisioning and capacity of the compute fleet, high availability, automatic scaling, applying security patches, deploying your code, and monitoring and logging your Lambda functions.
+- **High Availability**: AWS Lambda runs your code in a highly available compute infrastructure and automatically scales according to the workload.
+- **Cost-Effective**: You pay only for the compute time you consume. There are no charges when your code is not running.
+- **Supported Languages**: AWS Lambda supports seven programming languages: C#, Java, Ruby, Python, Node.js, Go, and PowerShell.
+  
+## Life Cycle for an AWS Lambda-Based Application
+
+1. **Writing Code**
+2. **Deploying Code**
+3. **Monitoring and Troubleshooting**
+
+## How AWS Lambda Works
+
+After uploading your code to a Lambda function, you can execute it. Lambda automatically handles the provisioning and management of the required resources.
+
+## AWS Lambda vs AWS EC2
+
+- **AWS Lambda** is a Platform as a Service (PaaS) that allows you to run specific code functions in response to events.
+- **AWS EC2** is Infrastructure as a Service (IaaS) that provides virtual machines where you can install and configure operating systems and software packages.
+
+### Key Differences
+
+- **Environment**: Lambda supports specific languages, while EC2 allows you to run any code as long as you configure the environment.
+- **Management**: Lambda requires no server management, while EC2 involves setting up and managing virtual machines.
+- **Cost**: Lambda charges based on compute time, while EC2 charges per second.
+
+## Important Terms
+
+- **Function**: A resource you can invoke to run your code in AWS Lambda. It includes the code that processes events and a runtime to pass requests and responses.
+- **Runtime**: Allows functions in different languages to run in the same execution environment.
+- **Event**: A JSON-formatted document that contains data for a Lambda function to process.
+- **Event Source/Trigger**: An AWS service or custom service that triggers your function.
+- **Downstream Resource**: An AWS service like DynamoDB or S3 that your Lambda function interacts with.
+- **Concurrency**: The number of requests your function is serving at any given time.
+
+## How Lambda Triggers
+
+1. **Changes in an S3 bucket**
+2. **HTTP requests from API Gateway**
+3. **DynamoDB**
+4. **Kinesis (for data streaming)**
+5. **Lambda to Lambda**
+
+## Compute Resource Allocation
+
+- During configuration, you allocate the memory for your Lambda function. AWS Lambda automatically allocates CPU and other resources based on this memory.
+- You can update the memory allocation in increments of 64 MB, ranging from 128 MB to 3008 MB.
+- If you need more than 3008 MB, consider using an EC2 instance.
+
+## Limitations of Lambda
+
+- The default timeout is 3 seconds, but it can be increased up to 900 seconds (15 minutes).
+- **IAM Role**: This role is assumed by AWS Lambda when it executes your function.
+
+## Lambda Access Level
+
+- AWS Lambda can access AWS services inside or outside of a VPC.
+- To access private resources inside a VPC, provide the VPC subnet ID and security group.
+
+## Different Ways to Invoke a Lambda Function
+
+### Synchronous Invocation (Push-Based)
+
+- The most common way to invoke a Lambda function, where the function executes upon an API call.
+- **Sources**:
+  - ELB
+  - Amazon Cognito
+  - CloudFront
+  - API Gateway
+  - Amazon Lex
+  - Kinesis Data Firehose
+
+### Asynchronous Invocation (Event-Based)
+
+- Lambda places the event in a queue and returns a success response without additional information.
+- **Sources**:
+  - Amazon S3
+  - SNS
+  - SES
+  - CloudFormation
+  - CloudWatch Logs
+  - CloudWatch Events
+  - AWS CodeCommit
+  - AWS Config
+
+### Poll-Based Invocation
+
+- Designed to integrate with AWS stream and queue-based services without code or server management.
+- **Sources**:
+  - Amazon Kinesis
+  - Amazon SQS
+
+## When to Use EC2 Instead of Lambda
+
+- **EC2** requires you to architect everything, like load balancers and EBS volumes, and install software packages on virtual machines.
+- **Lambda** is for sporadic workloads with varying request volumes.
+- For continuous, long-running tasks, EC2 might be more cost-effective and suitable.
+
+  But, if your code will be running for hours, and you expect a continuous stream of requests, you should probably go with EC2, because the architecture of Lambda is for a sporadic kind of workload, wherein there will be some quiet hours and some spikes in the no. of requests as well.
+
+  For example, logging the email activity for say a small company, would see more activity during the day than in the night, also there could be days when there are less emails to be processed, and sometimes the whole world could start emailing you! In both the cases, Lambda is at your service.
+
+  Considering this use case for a big social networking company, where the emails are never ending because it has a huge user base, Lambda may not be the apt choice.
+
+### Example Scenarios
+
+- **Lambda**: Suitable for applications with variable workloads, like logging email activity for a small company.
+- **EC2**: Better for large-scale, continuous operations, such as handling constant email traffic for a big social networking company.
 
 ## AWS Lambda Architecture
 
@@ -14,13 +125,13 @@ AWS Lambda operates on a serverless model, handling the execution of code in res
    - **Use Case:** A company wants to process incoming data files automatically. They create a Lambda function that triggers on file uploads to an S3 bucket, processes the data, and stores results in another S3 bucket.
    - **Billing Details:** Charges based on the number of requests and the duration of function execution. The first 1 million requests and 400,000 GB-seconds of compute time per month are free.
    - **Commands:**
-     ```bash
+```bash
      # Create a Lambda function
      aws lambda create-function --function-name my-function --runtime nodejs14.x --role arn:aws:iam::account-id:role/service-role/my-role --handler index.handler --zip-file fileb://function.zip
 
      # Invoke a Lambda function
      aws lambda invoke --function-name my-function --payload '{"key": "value"}' response.json
-     ```
+```
 
 ### 2. Triggers
    - **Description:** Events that invoke Lambda functions. Triggers can come from various sources, such as S3, DynamoDB, Kinesis, and API Gateway.
@@ -43,13 +154,13 @@ AWS Lambda operates on a serverless model, handling the execution of code in res
    - **Use Case:** A development team uses a common logging library across multiple Lambda functions. They create a Lambda Layer for the logging library and attach it to each function.
    - **Billing Details:** Charges for Lambda Layers are included in the function execution costs. There are no separate charges for using layers.
    - **Commands:**
-     ```bash
+```bash
      # Publish a new version of a Lambda Layer
      aws lambda publish-layer-version --layer-name my-layer --zip-file fileb://layer.zip --compatible-runtimes nodejs14.x
 
      # Add a Layer to a Lambda function
      aws lambda update-function-configuration --function-name my-function --layers arn:aws:lambda:region:account-id:layer:my-layer:1
-     ```
+```
 
 ### 4. API Gateway Integration
    - **Description:** API Gateway provides a RESTful API endpoint that triggers Lambda functions. This allows you to create serverless APIs that can handle HTTP requests and responses.
@@ -60,7 +171,7 @@ AWS Lambda operates on a serverless model, handling the execution of code in res
    - **Use Case:** A company creates a serverless web application where users interact via an API. They use API Gateway to route HTTP requests to Lambda functions, which handle business logic and interact with a database.
    - **Billing Details:** Charges for API Gateway are based on the number of API calls and the amount of data transferred. Lambda execution costs are additional.
    - **Commands:**
-     ```bash
+```bash
      # Create a new API Gateway REST API
      aws apigateway create-rest-api --name my-api
 
@@ -72,7 +183,7 @@ AWS Lambda operates on a serverless model, handling the execution of code in res
 
      # Link Lambda function to API Gateway
      aws apigateway put-integration --rest-api-id api-id --resource-id resource-id --http-method POST --type AWS_PROXY --integration-http-method POST --uri arn:aws:apigateway:region:lambda:path/2015-03-31/functions/function-arn/invocations
-     ```
+```
 
 ### 5. Event Source Mappings
    - **Description:** Event source mappings link a Lambda function to a stream-based event source, such as DynamoDB Streams or Kinesis Data Streams.

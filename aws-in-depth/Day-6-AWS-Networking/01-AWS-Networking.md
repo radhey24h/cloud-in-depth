@@ -1,184 +1,146 @@
-# AWS Networking
+# Networking in AWS
 
-AWS Networking encompasses a variety of services and components that enable you to securely connect, manage, and monitor your network resources in the AWS cloud. This document provides an in-depth overview of key AWS networking components, including their architecture, use cases, billing details, and relevant commands and configurations.
+## Internet Protocol Addressing
+### Types of Addressing
+1. **Physical Addressing**: MAC Address (48 bits)
+- **Definition**: Refers to the unique hardware address assigned to a network interface card (NIC) or other hardware devices on a network.
+- **Example**: MAC Address (Media Access Control Address) is a 48-bit address used to uniquely identify network devices at the hardware level.
 
-## AWS VPC (Virtual Private Cloud)
+2. **Logical Addressing**: 
+- **Definition**: Refers to an address used to identify devices on a network at a more abstract level, typically managed by network protocols.
+- **Example**: IP Address (Internet Protocol Address), such as IPv4 or IPv6, is used to identify devices on a network and route data between them. IPv4 addresses are 32-bit, while IPv6 addresses are 128-bit.
+   - **IP Version 4 (IPV4)**: 32-bit address with 4 octets, each octet ranging from 0 to 255.
+   - **IP Version 6 (IPV6)**: 128-bit address designed to replace IPv4.
 
-AWS VPC allows you to create a logically isolated network that you define. You can configure IP address ranges, subnets, route tables, and network gateways to control network traffic.
+### IP Version 4 (IPV4)
+- **Address Format**: IPv4 addresses are composed of 4 octets, each containing 8 bits. Example: `192.168.39.240`.
+- **Classes**:
+  - **Class A**: `1.0.0.0` to `126.0.0.0` (127 is reserved for loopback address)
+  - **Class B**: `128.0.0.0` to `191.255.0.0`
+  - **Class C**: `192.0.0.0` to `223.255.255.0`
+  - **Class D**: `224.0.0.0` to `239.255.255.255` (Multicast)
+  - **Class E**: `240.0.0.0` to `255.255.255.255` (Reserved for research)
 
-### Architecture
+**Identifying IP Class**:
+- For `137.20.20.10`, the first octet `137` indicates Class B.
+- For `201.100.10.0`, the first octet `201` indicates Class C.
 
-- **VPC:** A logically isolated network within the AWS cloud.
-- **Subnets:** Segments of the VPC's IP address range that can be used to organize resources.
-- **Route Tables:** Direct traffic within and outside the VPC.
-- **Internet Gateway:** Allows communication between instances in your VPC and the internet.
-- **NAT Gateway/Instance:** Enables instances in a private subnet to connect to the internet while preventing inbound internet traffic.
+**Network ID Calculation**:
+- **Class A**: Network ID is the first octet, remaining are for hosts.
+  - Example: `115.10.0.15` -> Network ID: `115.0.0.0`
+- **Class B**: Network ID is the first two octets, remaining are for hosts.
+  - Example: `150.10.10.100` -> Network ID: `150.10.0.0`
+- **Class C**: Network ID is the first three octets, remaining is for hosts.
+  - Example: `196.10.10.10` -> Network ID: `196.10.10.0`
 
-### Use Cases
+**Subnet Mask Calculation**:
+- **Class A**: `255.0.0.0`
+- **Class B**: `255.255.0.0`
+- **Class C**: `255.255.255.0`
 
-1. **Private Network for Resources**
-   - **Scenario:** An organization needs a private network for its web applications and databases.
-   - **Solution:** Create a VPC with public and private subnets, place web servers in public subnets, and databases in private subnets.
+### Private IP Ranges
+- **Class A**: `10.0.0.0` to `10.255.255.255`
+- **Class B**: `172.16.0.0` to `172.31.255.255`
+- **Class C**: `192.168.0.0` to `192.168.255.255`
 
-2. **Secure Application Deployment**
-   - **Scenario:** Deploy an application that needs secure communication between internal services.
-   - **Solution:** Use VPC with private subnets and configure security groups and NACLs (Network ACLs) for access control.
+**Example**:
+- For `150.10.20.30`:
+  - Network ID: `150.10.0.0`
+  - Broadcast ID: `150.10.255.255`
+  - Usable IPs: `2^8 - 2 = 65534`
 
-### Billing Details
+### Subnetting
+- **Definition**: Dividing a large network into smaller, more manageable sub-networks.
+- **Purpose**: Improves network efficiency and security.
 
-- **VPC Costs:** There are no additional charges for using VPC itself.
-- **Data Transfer:** Charges apply for data transfer between VPCs, internet, and other AWS services.
-- **NAT Gateway:** Charged per hour and per GB of data processed.
-- **Internet Gateway:** No additional charge for data transfer; however, data transfer out to the internet is billed.
+### CIDR (Classless Inter-Domain Routing)
+- **Class A CIDR**: `/8`
+- **Class B CIDR**: `/16`
+- **Class C CIDR**: `/24`
 
-### Commands
+## Amazon VPC (Virtual Private Cloud)
+Amazon VPC allows you to create a virtual network within AWS, closely resembling a traditional data center network.
 
-```bash
-# Create a VPC
-aws ec2 create-vpc --cidr-block 10.0.0.0/16
+- **Purpose**: Provides a virtual network space to launch AWS resources.
+- **Benefits**: Full control over your virtual networking environment, including IP address range, subnets, route tables, and network gateways.
 
-# Create a subnet
-aws ec2 create-subnet --vpc-id vpc-abc123 --cidr-block 10.0.1.0/24
+### VPC Features
+- **Max VPCs**: Up to 5 VPCs per AWS account.
+- **Max Subnets**: Up to 200 subnets per VPC.
+- **Elastic IPs**: Up to 5 per VPC.
+- **Automatic Creation**: DHCP, Network ACLs (NACLs), and Security Groups are automatically created.
 
-# Attach an internet gateway to a VPC
-aws ec2 attach-internet-gateway --vpc-id vpc-abc123 --internet-gateway-id igw-abc123
+### Types of VPC
+1. **Default VPC**:
+   - Automatically created in each AWS region.
+   - Includes a default CIDR block, security groups, NACLs, route tables, and an internet gateway.
+   - Used by default when launching EC2 instances if a custom VPC is not specified.
 
-# Create a NAT Gateway
-aws ec2 create-nat-gateway --subnet-id subnet-abc123 --allocation-id eipalloc-abc123
-```
-AWS Route 53
-AWS Route 53 is a scalable and highly available Domain Name System (DNS) web service designed to route end-user requests to Internet applications.
+2. **Custom VPC**:
+   - Created manually by the AWS account owner.
+   - Allows specifying the CIDR block and configuring security groups, NACLs, and route tables.
+   - Requires manual creation of an internet gateway if needed.
 
-Architecture
-Hosted Zones: Containers for records that map domain names to IP addresses.
-Record Sets: DNS records like A, CNAME, MX, and TXT.
-Routing Policies: Control how DNS queries are answered based on routing policy.
-Use Cases
-DNS Management
+### Public vs. Private Subnets
+- **Public Subnet**:
+  - Routed to an internet gateway.
+  - Instances need a public IP or Elastic IP to communicate with the internet.
 
-Scenario: Manage DNS records for a web application.
-Solution: Use Route 53 to create A records pointing to your web servers' IP addresses and configure CNAME records for subdomains.
-Health-Based Routing
+- **Private Subnet**:
+  - Not routed to an internet gateway.
+  - Instances do not have direct internet access.
 
-Scenario: Route traffic to healthy instances in different regions.
-Solution: Implement health checks and failover routing policies to direct traffic to healthy resources.
-Billing Details
-Hosted Zones: Charged per hosted zone.
-DNS Queries: Charged per DNS query based on the type of query.
-Health Checks: Charged per health check configured.
-Commands
-```bash
-# Create a hosted zone
-aws route53 create-hosted-zone --name example.com --caller-reference unique-string
+**Reserved IPs in Subnets**:
+- `10.0.0.0` -> Reserved for VPC router
+- `10.0.0.1` -> Reserved for VPC route
+- `10.0.0.2` -> Reserved for DNS server
+- `10.0.0.3` -> Reserved for future use
+- `10.0.0.255` -> Broadcast address
 
-# Create a DNS record
-aws route53 change-resource-record-sets --hosted-zone-id Z12345678EXAMPLE --change-batch file://changes.json
 
-```
-change.JSON
-```json
-{
-  "Changes": [
-    {
-      "Action": "CREATE",
-      "ResourceRecordSet": {
-        "Name": "example.com",
-        "Type": "A",
-        "TTL": 60,
-        "ResourceRecords": [
-          {
-            "Value": "192.0.2.44"
-          }
-        ]
-      }
-    }
-  ]
-}
-```
+## Components of VPC
+### CIDR & IP Addressing
+- **CIDR (Classless Inter-Domain Routing)**: A method for specifying IP address ranges. CIDR notation is written as `<IP_Address>/prefix_length`, where `prefix_length` defines the number of bits in the subnet mask. For example, `192.168.1.0/24` indicates a network where the first 24 bits are the network part of the address.
+- **IP Addressing**: Within a VPC, you assign IP addresses to various components. You can define private IP address ranges for your VPC, and these ranges can be divided into subnets to segment your network.
 
-AWS Direct Connect
-AWS Direct Connect provides a dedicated network connection from your premises to AWS, offering more consistent network performance compared to internet-based connections.
+### Implied Router & Route Table
+- **Implied Router**: Each VPC automatically includes an implied router, which is responsible for routing traffic between subnets within the VPC and handling the routing between your VPC and the internet or other AWS services.
+- **Route Table**: A set of rules (routes) that determine where network traffic is directed. Each subnet in a VPC is associated with a route table, which controls the traffic routing between subnets and to/from the internet, VPN, or other VPCs.
 
-Architecture
-Direct Connect Locations: Data centers where you can establish a connection.
-Virtual Interfaces: Logical connections for routing traffic between your network and AWS.
-Router: On-premises router connected to AWS Direct Connect.
-Use Cases
-High-Performance Network
+### Internet Gateway
+- **Purpose**: An Internet Gateway (IGW) allows instances in your VPC to connect to the internet. It facilitates bidirectional communication between your VPC and the internet.
+- **Function**: Provides a route to the internet for instances in public subnets, enabling them to access the internet and receive inbound traffic from the internet.
 
-Scenario: An enterprise requires high-bandwidth and low-latency connection to AWS for large data transfers.
-Solution: Use Direct Connect for a dedicated connection that offers consistent performance and potentially lower data transfer costs.
-Secure Data Transfer
+### Security Groups
+- **Purpose**: Security Groups act as virtual firewalls for your instances to control inbound and outbound traffic. They are associated with EC2 instances and can be used to define rules that allow or deny traffic based on IP address, port, and protocol.
+- **Characteristics**:
+  - **State-aware**: Security Groups automatically allow return traffic for established connections.
+  - **Instance Association**: Can be applied to multiple instances.
 
-Scenario: Securely transfer sensitive data to AWS without going over the public internet.
-Solution: Direct Connect provides a private connection with higher security and compliance.
-Billing Details
-Port Hours: Charged per port-hour for the dedicated connection.
-Data Transfer: Charged per GB of data transferred out of AWS.
-Commands
-```bash
-# Create a Direct Connect connection
-aws directconnect create-connection --connection-name my-connection --connection-bandwidth 1Gbps --location EqSe2
+### Network ACLs (Access Control Lists)
+- **Purpose**: Network ACLs control inbound and outbound traffic at the subnet level, providing an additional layer of security by allowing or denying traffic based on rules.
+- **Characteristics**:
+  - **Stateless**: Rules must be defined for both inbound and outbound traffic separately.
+  - **Subnet Application**: Applied to all instances in a subnet.
 
-# Create a virtual interface
-aws directconnect create-private-virtual-interface --connection-id dxcon-abc123 --new-private-virtual-interface allocation-id eipalloc-abc123 --vlan 101
+### Virtual Private Gateway
+- **Purpose**: A Virtual Private Gateway (VGW) connects your VPC to an on-premises network via a VPN connection. It allows secure communication between your AWS environment and your on-premises network.
+- **Function**: Acts as a bridge between the VPC and your on-premises network, enabling encrypted communication over the internet.
 
-```
+### Peering Connection
+- **Purpose**: A VPC Peering Connection allows you to connect two VPCs, enabling them to route traffic between each other as if they were within the same network.
+- **Use Cases**: Useful for sharing resources between VPCs, such as databases or applications, or integrating different environments.
 
-AWS Transit Gateway
-AWS Transit Gateway connects multiple VPCs and on-premises networks through a central hub, simplifying network management.
+### Elastic IPs
+- **Purpose**: An Elastic IP (EIP) is a static, public IP address designed for dynamic cloud computing. Unlike standard public IPs, Elastic IPs remain the same across instance stops and starts.
+- **Function**: Provides a way to maintain a fixed IP address for your instances, ensuring that your application's IP address does not change.
 
-Architecture
-Transit Gateway: Central hub that interconnects VPCs and on-premises networks.
-Attachments: Connections between Transit Gateway and VPCs or VPNs.
-Routing Tables: Define routing rules for traffic between attachments.
-Use Cases
-Centralized Network Management
+### NAT (Network Address Translation)
+- **Purpose**: NAT conserves IP addresses by allowing private IP networks to connect to the internet using a single public IP.
+- **Types**:
+  - **NAT Instance**: A legacy solution for enabling outbound internet traffic for instances in a private subnet.
+  - **NAT Gateway**: A managed service offering better availability, higher bandwidth, and less administrative effort.
 
-Scenario: Manage connectivity between multiple VPCs and on-premises networks from a single point.
-Solution: Use Transit Gateway to simplify network topology and routing.
-Hybrid Cloud Integration
+## AWS Direct Connect
+- **Purpose**: AWS Direct Connect establishes a private connection between your premises and AWS. It provides better network performance and throughput compared to internet-based connections.
 
-Scenario: Integrate on-premises networks with multiple VPCs in AWS.
-Solution: Connect your on-premises data center to AWS using Transit Gateway and VPN or Direct Connect.
-Billing Details
-Transit Gateway Attachments: Charged per attachment.
-Data Processing: Charged per GB of data processed through the Transit Gateway.
-Data Transfer: Charged per GB for data transferred between attachments.
-Commands
-```bash
-# Create a Transit Gateway
-aws ec2 create-transit-gateway --description "My Transit Gateway"
-
-# Create a Transit Gateway Attachment
-aws ec2 create-transit-gateway-vpc-attachment --transit-gateway-id tgw-abc123 --vpc-id vpc-abc123 --subnet-ids subnet-abc123
-```
-AWS VPN
-AWS VPN provides secure connectivity between your on-premises network and AWS using IPsec VPN connections.
-
-Architecture
-Virtual Private Gateway (VGW): The VPN concentrator on the AWS side.
-Customer Gateway (CGW): The VPN concentrator on the on-premises side.
-VPN Connection: The encrypted tunnel between VGW and CGW.
-Use Cases
-Secure Remote Access
-
-Scenario: Provide secure access to AWS resources from an on-premises network.
-Solution: Configure a VPN connection to establish a secure and encrypted link between your on-premises network and AWS.
-Site-to-Site Connectivity
-
-Scenario: Connect multiple on-premises sites to AWS securely.
-Solution: Use VPN connections to link multiple sites to your AWS VPC.
-Billing Details
-VPN Connections: Charged per VPN connection hour.
-Data Transfer: Charges for data transferred over the VPN connection.
-Commands
-```bash
-# Create a Virtual Private Gateway
-aws ec2 create-vpn-gateway --type ipsec.1
-
-# Create a VPN Connection
-aws ec2 create-vpn-connection --type ipsec.1 --customer-gateway-id cgw-abc123 --vpn-gateway-id vgw-abc123 --options StaticRoutesOnly=true
-```
-Summary
-AWS Networking services provide robust solutions for managing network resources, connectivity, and security. Each component offers specific features tailored to different use cases, from private and secure network connections to scalable and high-performance routing.
