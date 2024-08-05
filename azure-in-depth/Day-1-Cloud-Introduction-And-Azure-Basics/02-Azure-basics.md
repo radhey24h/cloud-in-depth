@@ -170,7 +170,7 @@ using Management group we can manage company(Management group) level cost and az
 ## Components of Azure Architecture
 
 ### Data centres
-These are massive warehouses where Azure stores data and runs applications for users. Think of them like giant storage facilities for digital information.
+A data center is like a big, secure building full of powerful computers and storage devices. It keeps all kinds of information safe and available so that people and businesses can access it whenever they need it. 
 
 ### Regions
 Azure divides the world into regions, much like how continents divide the Earth. Each region contains multiple data centres. These regions help Azure users choose where they want their data and applications to be located for optimal performance and compliance with local laws.
