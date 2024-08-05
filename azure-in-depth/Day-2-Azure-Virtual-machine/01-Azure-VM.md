@@ -99,7 +99,7 @@ Virtualization allows multiple virtual machines to run on a single physical serv
     ```
 3. If you are using an SSH key for authentication, make sure to specify the path to your private key:
     ```bash
-    ssh -i C:\Users\admin\Downloads\linuxdevelopment_key.pem azureuser@20.197.7.50
+    ssh -i C:\Users\admin\Downloads\linuxdevelopment_key.pem azureuser@20.197.21.57
     
     ssh -i /path/to/private-key <username>@<public-ip>
     ```
