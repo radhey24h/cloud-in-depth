@@ -27,12 +27,11 @@
     - [Load Balancing](#load-balancing)
 
 ## What is Cloud Computing?
-Before knowing cloud computing let us understand what is computer and computing?
+Before knowing cloud computing let us understand what is computer and what is computing?
 
-## What is Computer and Computing?
-- **Computer**: A computer is a device that processes data according to instructions stored internally or externally. It can perform various tasks such as calculations, data storage, and communication.
+- **Computer**: A computer is a device that processes data according to set of instruction. It can perform various tasks such as calculations, data storage, and communication.
 
-- **Computing**: Computing refers to the use of computers and computer technology to process information, perform calculations, and manage data.
+- **Computing**: Computing refers to the use of computers, It includes everything from basic tasks like data entry and word processing to complex processes like software development, data analysis, and artificial intelligence.
 
 ## how many computing models is available?
 
