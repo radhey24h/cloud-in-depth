@@ -40,24 +40,22 @@ Before knowing cloud computing let us understand what is computer and what is co
 When we talk about standalone PC, it is called desktop computing model, desktop computing model was the first computing model in IT industry.
 This model is also famous today because we run this model to complete our day to day task.
 - **Benefits**: Personalization, full control over resources.
-- **Drawbacks**: Limited scalability, high maintenance costs and not able to run remotely it becomes just a device to manage some personal work.
+- **Drawbacks**: Limited scalability. Also not able to run remotely, it just becomes a device to manage some personal work.
 - **Use Case**: Small offices or personal computing.
 
 ### 2. Client-Server Computing Model
 - **Definition**: Clients request services from centralized servers. 
-To avoid the desktop model drawback client server computing model came in picture, So in Client server model multiple client machine was connected to a server and all client can work on a centralised source.
+To avoid the drawback of desktop computing model client-server computing model came in picture, So in Client server computing model multiple client machine was connected to a server and all client can work on a centralised source.
 - **Benefits**: Centralized management, easier updates.
 - **Drawbacks**: Single point of failure, scalability limitations. 
   
   **What all reason is possible for server failure**
     1. Hardware Failure: Components such as hard drives, power supplies, or memory modules can fail due to wear and tear, overheating, or manufacturing defects.
-    2. Software Issues: Bugs in operating systems, firmware, or applications can lead to crashes or instability, causing the server to fail.
+    2. Software Issues: Bugs in operating systems, applications can lead to crashes causing the server to fail.
     3. Network Problems: Issues with routers, switches, or cables can disrupt communication between servers.
     4. Human Error: Misconfigurations, improper maintenance procedures
     5. Power Outages: Interruptions in electrical power supply, whether due to grid failures can cause servers to shut down unexpectedly.
     6. Natural Disasters: Events such as earthquakes, floods, or fires can physically damage server infrastructure, leading to complete or partial failures.
-
-- **Use Case**: Web applications, email servers.
 
 ### 3. Cluster Computing Model
 - **Definition**: Multiple computers work together as a single system. 
