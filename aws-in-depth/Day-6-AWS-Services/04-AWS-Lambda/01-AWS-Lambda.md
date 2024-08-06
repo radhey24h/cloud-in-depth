@@ -1,72 +1,108 @@
 # AWS Lambda
-
-AWS Lambda is an event-driven compute service that lets you run your code without provisioning or managing servers. It allows you to run backend services with zero administration.
+AWS Lambda is a serverless event driven compute service that enables you to run your code without managing infrastructure.
 
 ## Key Features of AWS Lambda
+1. **Serverless Architecture**
+   - No need to manage infrastructure.
+   - AWS handles scaling and server maintenance.
 
-- **Managed Service**: AWS Lambda handles provisioning and capacity of the compute fleet, high availability, automatic scaling, applying security patches, deploying your code, and monitoring and logging your Lambda functions.
-- **High Availability**: AWS Lambda runs your code in a highly available compute infrastructure and automatically scales according to the workload.
-- **Cost-Effective**: You pay only for the compute time you consume. There are no charges when your code is not running.
-- **Supported Languages**: AWS Lambda supports seven programming languages: C#, Java, Ruby, Python, Node.js, Go, and PowerShell.
+2. **Automatic Scaling**
+   - Code runs in response to each trigger.
+   - Automatically scales with workload size.
+
+3. **Event-Driven Execution**
+   - Triggered by AWS services (e.g., S3, DynamoDB) or custom events.
+   - Flexible and event-driven operations.
+
+4. **Pay-per-Use Pricing**
+   - Charged based on request count and code execution duration.
+   - No charges for idle time.
+
+5. **Support for Multiple Languages**
+   - Supports Python, Node.js, Java, Go, Ruby, .NET Core, and more.
+
+6. **Integrated Security**
+   - Integrates with AWS IAM for secure resource access.
+   - Role and permission management for functions.
+
+7. **Execution Timeout**
+   - Set execution timeout up to 15 minutes.
+   - Manage resource consumption and control execution time.
+
+8. **Resource Configuration**
+   - Allocate memory and set execution timeout.
+   - Optimize performance and cost.
+
+9. **Monitoring and Logging**
+   - Integrates with Amazon CloudWatch for logging and monitoring.
+   - Track metrics like invocation count, duration, and error rate.
+
+10. **Versioning and Aliases**
+    - Supports function versioning for code management.
+    - Use aliases to point to specific versions for easier deployment.
+
+11. **Environment Variables**
+    - Pass operational parameters to functions.
+    - Update parameters without changing the code.
   
 ## Life Cycle for an AWS Lambda-Based Application
-
-1. **Writing Code**
-2. **Deploying Code**
-3. **Monitoring and Troubleshooting**
-
-## How AWS Lambda Works
-
-After uploading your code to a Lambda function, you can execute it. Lambda automatically handles the provisioning and management of the required resources.
-
-## AWS Lambda vs AWS EC2
-
-- **AWS Lambda** is a Platform as a Service (PaaS) that allows you to run specific code functions in response to events.
-- **AWS EC2** is Infrastructure as a Service (IaaS) that provides virtual machines where you can install and configure operating systems and software packages.
-
-### Key Differences
-
-- **Environment**: Lambda supports specific languages, while EC2 allows you to run any code as long as you configure the environment.
-- **Management**: Lambda requires no server management, while EC2 involves setting up and managing virtual machines.
-- **Cost**: Lambda charges based on compute time, while EC2 charges per second.
-
-## Important Terms
-
-- **Function**: A resource you can invoke to run your code in AWS Lambda. It includes the code that processes events and a runtime to pass requests and responses.
-- **Runtime**: Allows functions in different languages to run in the same execution environment.
-- **Event**: A JSON-formatted document that contains data for a Lambda function to process.
-- **Event Source/Trigger**: An AWS service or custom service that triggers your function.
-- **Downstream Resource**: An AWS service like DynamoDB or S3 that your Lambda function interacts with.
-- **Concurrency**: The number of requests your function is serving at any given time.
+1. ***Writing Code***
+2. ***Deploying Code***
+3. ***Monitoring and Troubleshooting***
 
 ## How Lambda Triggers
+1. ***Changes in an S3 bucket***
+2. ***HTTP requests from API Gateway***
+3. ***DynamoDB***
+4. ***Kinesis (for data streaming)***
+5. ***Lambda to Lambda***
 
-1. **Changes in an S3 bucket**
-2. **HTTP requests from API Gateway**
-3. **DynamoDB**
-4. **Kinesis (for data streaming)**
-5. **Lambda to Lambda**
+
+## How AWS Lambda Works: Cold Start vs. Hot Start
+### Cold Start
+- **Definition**: A cold start occurs when a Lambda function is invoked for the first time, or when it has been idle long enough for AWS to deallocate the previous execution environment.
+
+- **Process**:
+  1. **Provisioning**: AWS provisions a new execution environment.
+  2. **Initialization**: The function's code and dependencies are loaded and initialized.
+  3. **Execution**: The function executes in response to the request.
+
+- **Impact**: Cold starts can introduce latency, typically a few hundred milliseconds to a couple of seconds.
+
+- **Mitigation Strategies**:
+  - Optimize package size and initialization code.
+  - Use provisioned concurrency to keep environments warm.
+
+### Hot Start
+- **Definition**: A hot start occurs when a Lambda function is invoked using an already warm execution environment.
+
+- **Process**:
+  1. **Execution**: The function executes immediately, using the existing environment.
+- **Impact**: Hot starts result in lower latency since the environment is ready to handle requests.
+
+### Deployment and Cold Starts
+- Deploying a new version of a Lambda function usually triggers a cold start for initial invocations, even if the function was previously idle.
+
+### Best Practices
+- Use provisioned concurrency to reduce cold start impact.
+- Optimize function initialization and package size to speed up cold starts.
 
 ## Compute Resource Allocation
-
 - During configuration, you allocate the memory for your Lambda function. AWS Lambda automatically allocates CPU and other resources based on this memory.
 - You can update the memory allocation in increments of 64 MB, ranging from 128 MB to 3008 MB.
 - If you need more than 3008 MB, consider using an EC2 instance.
 
 ## Limitations of Lambda
-
 - The default timeout is 3 seconds, but it can be increased up to 900 seconds (15 minutes).
 - **IAM Role**: This role is assumed by AWS Lambda when it executes your function.
 
 ## Lambda Access Level
-
 - AWS Lambda can access AWS services inside or outside of a VPC.
 - To access private resources inside a VPC, provide the VPC subnet ID and security group.
 
 ## Different Ways to Invoke a Lambda Function
 
 ### Synchronous Invocation (Push-Based)
-
 - The most common way to invoke a Lambda function, where the function executes upon an API call.
 - **Sources**:
   - ELB
@@ -77,7 +113,6 @@ After uploading your code to a Lambda function, you can execute it. Lambda autom
   - Kinesis Data Firehose
 
 ### Asynchronous Invocation (Event-Based)
-
 - Lambda places the event in a queue and returns a success response without additional information.
 - **Sources**:
   - Amazon S3
@@ -90,14 +125,19 @@ After uploading your code to a Lambda function, you can execute it. Lambda autom
   - AWS Config
 
 ### Poll-Based Invocation
-
 - Designed to integrate with AWS stream and queue-based services without code or server management.
 - **Sources**:
   - Amazon Kinesis
   - Amazon SQS
 
-## When to Use EC2 Instead of Lambda
+## AWS Lambda vs AWS EC2
+- **AWS Lambda** is a Platform as a Service (PaaS) that allows you to run specific code functions in response to events.
+- **AWS EC2** is Infrastructure as a Service (IaaS) that provides virtual machines where you can install and configure operating systems and software packages.
+- **Environment**: Lambda supports specific languages, while EC2 allows you to run any code as long as you configure the environment.
+- **Management**: Lambda requires no server management, while EC2 involves setting up and managing virtual machines.
+- **Cost**: Lambda charges based on compute time, while EC2 charges per second.
 
+## When to Use EC2 Instead of Lambda
 - **EC2** requires you to architect everything, like load balancers and EBS volumes, and install software packages on virtual machines.
 - **Lambda** is for sporadic workloads with varying request volumes.
 - For continuous, long-running tasks, EC2 might be more cost-effective and suitable.
@@ -109,12 +149,10 @@ After uploading your code to a Lambda function, you can execute it. Lambda autom
   Considering this use case for a big social networking company, where the emails are never ending because it has a huge user base, Lambda may not be the apt choice.
 
 ### Example Scenarios
-
 - **Lambda**: Suitable for applications with variable workloads, like logging email activity for a small company.
 - **EC2**: Better for large-scale, continuous operations, such as handling constant email traffic for a big social networking company.
 
 ## AWS Lambda Architecture
-
 AWS Lambda operates on a serverless model, handling the execution of code in response to events without the need for provisioning or managing servers. The architecture includes several key components:
 
 ### 1. Lambda Functions

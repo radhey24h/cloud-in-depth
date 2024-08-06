@@ -1,11 +1,11 @@
 # Azure Functions and Durable Functions
 
-Azure Functions is a serverless compute service provided by Microsoft Azure that enables you to run event-driven code without managing infrastructure. Azure Durable Functions is an extension of Azure Functions that allows you to write stateful workflows in a serverless compute environment.
+Azure Functions is a serverless event driven compute service provided by Microsoft Azure that enables you to run your code without managing infrastructure. 
+
+Azure Durable Functions is an extension of Azure Functions that allows you to write stateful workflows in a serverless compute environment.
 
 ## Azure Functions
-
 ### Overview
-
 Azure Functions lets you run small pieces of code, or "functions," in the cloud without provisioning or managing servers. It automatically scales based on demand and integrates with various Azure services.
 
 ### Architecture
