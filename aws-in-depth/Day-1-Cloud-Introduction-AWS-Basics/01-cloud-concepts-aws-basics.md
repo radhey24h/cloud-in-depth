@@ -36,7 +36,8 @@ Before knowing cloud computing let us understand what is computer and what is co
 ## how many computing models is available?
 
 ### 1. Desktop Computing Model
-- **Definition**: Traditional model with dedicated desktop computers. 
+- **Definition**: Traditional model with dedicated desktop computers.
+   
 When we talk about standalone PC, it is called desktop computing model, desktop computing model was the first computing model in IT industry.
 This model is also famous today because we run this model to complete our day to day task.
 - **Benefits**: Personalization, full control over resources.
@@ -44,7 +45,8 @@ This model is also famous today because we run this model to complete our day to
 - **Use Case**: Small offices or personal computing.
 
 ### 2. Client-Server Computing Model
-- **Definition**: Clients request services from centralized servers. 
+- **Definition**: Clients request services from centralized servers.
+  
 To avoid the drawback of desktop computing model client-server computing model came in picture, So in Client server computing model multiple client machine was connected to a server and all client can work on a centralised source.
 - **Benefits**: Centralized management, easier updates.
 - **Drawbacks**: Single point of failure, scalability limitations. 
@@ -58,7 +60,8 @@ To avoid the drawback of desktop computing model client-server computing model c
     6. Natural Disasters: Events such as earthquakes, floods, or fires can physically damage server infrastructure, leading to complete or partial failures.
 
 ### 3. Cluster Computing Model
-- **Definition**: Multiple computers work together as a single system. 
+- **Definition**: Multiple computers work together as a single system.
+  
 To avoid the drawback of client-server computing model Cluster computing model came in picture, So using the Cluster Computing model we can add more then one server in a cluster, so using this we can reduce the down time or any type of failure
 - **Benefits**: High availability, increased computing power.
 - **Drawbacks**: Complexity in management, cost of setup.
@@ -67,6 +70,7 @@ There was a major drawback of this system is its presence is not available in mu
 
 ### 4. Grid Computing Model
 - **Definition**: Coordinates resources across multiple domains.
+
 To avoid the drawback of cluster computing model grid computing model came in picture.
 - **Benefits**: Resource sharing, cost efficiency.
 - **Drawbacks**: Complex scheduling, security concerns.
