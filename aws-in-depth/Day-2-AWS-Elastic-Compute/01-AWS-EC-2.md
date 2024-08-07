@@ -1,10 +1,13 @@
 # Amazon Elastic Compute Cloud (EC2)
 
-Amazon Elastic Compute Cloud (EC2) provides scalable computing capacity in the AWS cloud. We can use EC2 to launch as many as vertical server as we need, we can also configure security and manage storage as per need.
+Amazon EC2 is a service that provides scalable virtual servers in the AWS cloud, enabling flexible and cost-effective web-scale computing.
 
-EC2 have two storage option EBS and Instance store. It has also preconfigured template are available that we known as Amazon Machine Image.
-
-By Default, when we create an EC2 Account with AWS, our account is limited to a maximum of 20 instance per EC2 region with default high I/O instances.
+## Key Points
+- **Scalability**: Easily scale computing resources up or down based on demand.
+- **Virtual Servers**: Launch multiple instances with customizable configurations.
+- **Security and Storage**: Configure security settings and choose between Elastic Block Store (EBS) for persistent storage and Instance Store for temporary storage.
+- **Preconfigured Templates**: Use Amazon Machine Images (AMIs) to quickly deploy instances with predefined configurations.
+- **Instance Limits**: Default limit of 20 instances per region, supporting high I/O operations.
 
 ## Types of EC2 instances
 General purpose instance, Compute optimized, memory optimized, storage optimized, Accelerated computing or GPU, High memory instances, previous generation instances.
@@ -35,6 +38,7 @@ EC2 Instance Purchasing options-
 But mainly there are three way to pay for amazon EC2 instances i.e. On-Demand, Reserved instance and Spot Instances.
 ## EC2 Access-
 To access instances, we need to a key and key pair name, we can download private key only once. The public key is saved by AWS to match it to the pair name and private key when you try to login to the EC2 instances. Without key pair we can’t access instance via RDP or SSH.
+
 There is 20 EC2 instances (soft limit) per account in a region, we can submit a request to increase it. 
 
 ## EC2 Architecture
