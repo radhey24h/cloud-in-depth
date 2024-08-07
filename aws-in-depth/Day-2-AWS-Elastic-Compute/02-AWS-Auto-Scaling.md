@@ -1,21 +1,21 @@
 # AWS Auto Scaling
-    AWS Auto Scaling is a service that helps us to maintain application availability and allows us to automatically add or remove resources according to the current demand. It ensures that we have the right number of Amazon EC2 instances running to handle the load of our application.
+AWS Auto Scaling is a service that helps us to maintain application availability and allows us to automatically add or remove resources according to the current demand. It ensures that we have the right number of Amazon EC2 instances running to handle the load of our application.
 
-    The Autoscaling feature is used to scale up and down automatically when it is required.
+The Autoscaling feature is used to scale up and down automatically when it is required.
 
-    The application available at AWS requires space and load and the Auto Scaling helps us by providing surety that there is a sufficient number of Amazon EC2 instances available to handle that load.
+The application available at AWS requires space and load and the Auto Scaling helps us by providing surety that there is a sufficient number of Amazon EC2 instances available to handle that load.
 
-    We can set a limit on EC2 instances such that the number doesn’t go below this.
+We can set a limit on EC2 instances such that the number doesn’t go below this.
 
-    The maximum numbers of EC2 instances can be set to be on a safer side.
+The maximum numbers of EC2 instances can be set to be on a safer side.
 
-    AWS Autoscaling ensures that your group has a sufficient amount of servers.
+AWS Autoscaling ensures that your group has a sufficient amount of servers.
 
-    Auto-scaling automatically modifies the EC2 instance as per your demand changes.
+Auto-scaling automatically modifies the EC2 instance as per your demand changes.
 
-    One can access Auto Scaling by signing into the AWS Management Console.
+One can access Auto Scaling by signing into the AWS Management Console.
 
-    It also helps us with some functions such as retrying requests, and handling error responses, making it is easier for the applicant to get started.
+It also helps us with some functions such as retrying requests, and handling error responses, making it is easier for the applicant to get started.
 
 ## Key Features of AWS Auto Scaling
 
@@ -69,11 +69,3 @@ AWS Auto Scaling works by monitoring your applications and automatically adjusti
 1. **Web Applications**: Maintain performance during peak traffic periods and reduce costs during off-peak times.
 2. **Batch Processing**: Scale compute resources based on the volume of jobs to be processed.
 3. **Data Processing**: Automatically adjust resources for data analytics or ETL workloads.
-
-## Setting Up AWS Auto Scaling
-
-1. **Define Launch Configuration/Template**: Specify instance details like AMI, instance type, and security settings.
-2. **Create Auto Scaling Group**: Set the desired, minimum, and maximum number of instances.
-3. **Configure Scaling Policies**: Define how and when your application should scale in or out.
-
-AWS Auto Scaling provides a reliable and efficient way to manage resources, ensuring that applications remain available and performant while optimizing costs.
