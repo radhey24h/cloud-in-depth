@@ -181,7 +181,9 @@ Disaster recovery refers to the process and procedures for recovering and restor
 Load balancing distributes incoming network traffic across multiple servers or resources in a balanced manner. It ensures optimal resource utilization, improves responsiveness, and prevents any single server from being overwhelmed by distributing workloads effectively.
 
 # Introduction to AWS
-Amazon Web Services (AWS) is a comprehensive cloud computing platform provided by Amazon. It offers a wide range (more then 200) of services, including computing power, storage options, and networking, allowing users to build and scale applications efficiently. AWS provides on-demand cloud services with pay-as-you-go pricing, making it a flexible and cost-effective solution for businesses of all sizes.
+Amazon Web Services (AWS) is a cloud computing platform provided by Amazon. It offers a wide range (more then 200) of services, including computing power, storage options, and networking, allowing users to build and scale applications efficiently. 
+
+AWS provides on-demand cloud services with pay-as-you-go pricing, making it a flexible and cost-effective solution for businesses of all sizes.
 
 ## Creating an Account with AWS
 
