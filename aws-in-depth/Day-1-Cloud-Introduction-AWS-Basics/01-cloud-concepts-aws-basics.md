@@ -147,10 +147,6 @@ Cloud computing involves the delivery of computing services (servers, storage, d
 - **Definition**: Creates virtual versions of computing resources.
 - **Use Case**: Server consolidation, efficient resource utilization.
 
-## Virtual Machine (VM/EC2)
-- **Definition**: Software emulation of a physical computer.
-- **Use Case**: Running multiple operating systems on a single physical server.
-
 ## API (Application Programming Interface)
 - **Definition**: Rules and protocols allowing software applications to interact.
 - **Use Case**: Integrating third-party services, automation.
