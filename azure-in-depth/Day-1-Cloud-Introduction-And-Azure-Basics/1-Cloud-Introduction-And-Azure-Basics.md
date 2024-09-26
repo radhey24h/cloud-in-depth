@@ -36,7 +36,6 @@ Before knowing cloud computing let us understand what is computer and what is co
 ## how many computing models is available?
 
 ### 1. Desktop Computing Model
-- **Definition**: Traditional model with dedicated desktop computers. 
 When we talk about standalone PC, it is called desktop computing model, desktop computing model was the first cmputing model in IT industry.
 This model is also famous today because we run this model to complete our day to day task.
 - **Benefits**: Personalization, full control over resources.
@@ -44,7 +43,6 @@ This model is also famous today because we run this model to complete our day to
 - **Use Case**: Small offices or personal computing.
 
 ### 2. Client-Server Computing Model
-- **Definition**: Clients request services from centralized servers. 
 To avoid the desktop model drawback client server computing model came in picture, So in Client server model multiple client machine was connected to a server and all client can work on a centrlised source.
 - **Benefits**: Centralized management, easier updates.
 - **Drawbacks**: Single point of failure, scalability limitations. 
@@ -60,7 +58,6 @@ To avoid the desktop model drawback client server computing model came in pictur
 - **Use Case**: Web applications, email servers.
 
 ### 3. Cluster Computing Model
-- **Definition**: Multiple computers work together as a single system. 
 To avoid the drawback of client-server computing moldel Cluster computing model came in picture, So using the Cluster Computing model we can add more then one server in a cluster, so using this we can reduce the down time or any type of failure
 - **Benefits**: High availability, increased computing power.
 - **Drawbacks**: Complexity in management, cost of setup.
@@ -68,10 +65,10 @@ There was a major drawback of this system is its presence is not available in mu
 - **Use Case**: Scientific computations, big data processing.
 
 ### 4. Grid Computing Model
-- **Definition**: Coordinates resources across multiple domains.
 To avoid the drawback of cluster computing model grid computing model came in piture.
 - **Benefits**: Resource sharing, cost efficiency.
 - **Drawbacks**: Complex scheduling, security concerns.
+
 The major drawback of this system was its cost.
 ### what all type of costs came in piture to manage server?
 - **Copex** Capital expenditure refers to the funds a company spends on acquiring, upgrading, or maintaining physical assets such as buildings, equipment, or infrastructure. These expenditures are typically one-time investments that are expected to generate benefits over a long period. Examples include purchasing servers,  or investing in machinery.
@@ -111,17 +108,9 @@ Cloud computing involves the delivery of computing services (servers, storage, d
 - **Development and Testing**: On-demand resources for testing and development.
 
 ## Cloud Market Share
-- **Amazon AWS**: Leading in IaaS and PaaS.
-- **Microsoft Azure**: Strong enterprise integration.
-- **Google Cloud**: Emphasizes data analytics and AI.
-
-## Cloud Agnostic
-- **Definition**: Flexibility to use any cloud service provider.
-- **Use Case**: Multi-cloud environments, flexibility in provider choices.
-
-## Cloud Native
-- **Definition**: Applications built specifically for cloud environments.
-- **Use Case**: Microservices architectures, rapid deployment.
+- **Amazon AWS**: Leading in IaaS and PaaS, holding the largest share, about 33%.
+- **Microsoft Azure**: Strong enterprise integration, coming in second with around 22%.
+- **Google Cloud**: Emphasizes data analytics and AI, at approximately 10%.
 
 ## Cloud Service Models
 - **IaaS (Infrastructure as a Service)**: Virtualized computing resources over the internet.
@@ -143,59 +132,17 @@ Cloud computing involves the delivery of computing services (servers, storage, d
 - **Hybrid Cloud**: Combination of public and private cloud environments.
   - **Use Case**: Scalable applications with data residency requirements.
 
-## Virtualization
-- **Definition**: Creates virtual versions of computing resources.
-- **Use Case**: Server consolidation, efficient resource utilization.
 
-## Virtual Machine (VM/EC2)
-- **Definition**: Software emulation of a physical computer.
-- **Use Case**: Running multiple operating systems on a single physical server.
-
-## API (Application Programming Interface)
-- **Definition**: Rules and protocols allowing software applications to interact.
-- **Use Case**: Integrating third-party services, automation.
-
-# Other Cloud Computing terminology
-
-## Scalability vs. Elasticity
-
-## Scalability
-
-- **Definition**: Scalability refers to the ability of a system to handle an increasing workload by proportionally increasing its resource capacity.
-- **Characteristics**:
-  - **Proportional Growth**: Resources are added in proportion to the demand.
-  - **Handling Increased Traffic**: Scales up to accommodate higher traffic or workload.
-
-## Elasticity
-
-- **Definition**: Elasticity refers to the capability of a system to dynamically commission and decommission resources as needed.
-- **Characteristics**:
-  - **Dynamic Adjustment**: Resources are adjusted in real-time based on current demand.
-  - **Cost-Efficiency**: Ensures optimal resource usage by scaling resources up or down as required.
-
-## Agility
-Agility in cloud computing means being able to make changes quickly and easily. 
-**Use-Case:** It's like being able to rearrange your furniture instantly to make room for guests. In the cloud, this means deploying new applications, scaling resources, or making updates rapidly, allowing businesses to respond to market demands and opportunities more effectively.
-
-## High Availability
-High availability in cloud computing means that a system or service is always up and running, even if something goes wrong. **Use-Case:** Imagine a store that never closes, even if one entrance is blocked; customers can still get in through another door. In the cloud, this means that your data and applications remain accessible, with backup systems ready to take over if there's an issue.
-
-## Fault Tolerance
-Fault tolerance in cloud computing means that a system can keep working even if some parts fail. Think of it like a car with extra tires that automatically replace a flat tire while you’re driving, so you don’t have to stop. This ensures that services remain available and reliable, even when issues occur.
-
-Fault tolerance is the ability of a system to continue operating in the event of hardware or software failures. It involves designing systems with redundancy and failover mechanisms to mitigate the impact of failures on overall system performance and availability.
-
-## Disaster Recovery
-
-Disaster recovery refers to the process and procedures for recovering and restoring data, applications, and infrastructure in the event of a natural or man-made disaster. It includes backup strategies, replication of data across geographically diverse locations, and comprehensive recovery plans.
-
-## Load Balancing
-
-Load balancing distributes incoming network traffic across multiple servers or resources in a balanced manner. It ensures optimal resource utilization, improves responsiveness, and prevents any single server from being overwhelmed by distributing workloads effectively.
+## Top Security Concerns in Cloud Computing
+1. **Data Breaches**: Unauthorized access to sensitive data.
+2. **Hijacking of Accounts**: Unauthorized access to user accounts.
+3. **Insider Threats**: Security risks from within the organization.
+4. **Malware Injection**: Introduction of malicious software.
+5. **Abuse of Cloud Services**: Misuse of cloud resources.
+6. **Insecure APIs**: Vulnerabilities in application programming interfaces.
 
 
 ## Cloud Design Patterns
-
 A cloud design pattern is a reusable solution to common problems encountered in cloud computing. Here are some key patterns:
 
 - **Ambassador**: Offloads common client connectivity tasks (e.g., monitoring, logging, routing, security) in a language-agnostic manner.
@@ -208,15 +155,62 @@ A cloud design pattern is a reusable solution to common problems encountered in 
 - **Sidecar**: Deploys helper components as separate containers or processes for isolation and encapsulation.
 - **Strangler**: Supports incremental migration by gradually replacing pieces of functionality with new services.
 
-## What is Serverless?
 
+
+# Other Cloud Computing terminology
+
+## Cloud Agnostic
+- **Definition**: Flexibility to use any cloud service provider.
+- **Use Case**: Multi-cloud environments, flexibility in provider choices.
+
+## Cloud Native
+- **Definition**: Applications built specifically for cloud environments.
+- **Use Case**: Microservices architectures, rapid deployment.
+
+## Virtualization
+- **Definition**: Creates virtual versions of computing resources.
+- **Use Case**: Server consolidation, efficient resource utilization.
+
+## Virtual Machine (VM/EC2)
+- **Definition**: Software emulation of a physical computer.
+- **Use Case**: Running multiple operating systems on a single physical server.
+
+## API (Application Programming Interface)
+- **Definition**: Rules and protocols allowing software applications to interact.
+- **Use Case**: Integrating third-party services, automation.
+
+## Scalability vs. Elasticity
+
+## Scalability
+- **Definition**: Scalability refers to the ability of a system to handle an increasing workload by proportionally increasing its resource capacity.
+- **Characteristics**:
+  - **Proportional Growth**: Resources are added in proportion to the demand.
+  - **Handling Increased Traffic**: Scales up to accommodate higher traffic or workload.
+
+## Elasticity
+- **Definition**: Elasticity refers to the capability of a system to dynamically commission and decommission resources as needed.
+- **Characteristics**:
+  - **Dynamic Adjustment**: Resources are adjusted in real-time based on current demand.
+  - **Cost-Efficiency**: Ensures optimal resource usage by scaling resources up or down as required.
+
+## Agility
+Agility in cloud computing means being able to make changes quickly and easily. 
+**Use-Case:** It's like being able to rearrange your furniture instantly to make room for guests. In the cloud, this means deploying new applications, scaling resources, or making updates rapidly, allowing businesses to respond to market demands and opportunities more effectively.
+
+## High Availability
+High availability in cloud computing means that a system or service is always up and running, even if something goes wrong. **Use-Case:** Imagine a store that never closes, even if one entrance is blocked; customers can still get in through another door. In the cloud, this means that your data and applications remain accessible, with backup systems ready to take over if there's an issue.
+
+## Load Balancing
+Load balancing distributes incoming network traffic across multiple servers or resources in a balanced manner. It ensures optimal resource utilization, improves responsiveness, and prevents any single server from being overwhelmed by distributing workloads effectively.
+
+
+## What is Serverless?
 - **Definition**: Serverless computing allows developers to build and deploy applications without managing underlying servers or infrastructure. The cloud provider handles resource allocation, scaling, and operational aspects.
 - **Key Characteristics**:
   - **Focus on Code**: Developers focus on writing code and defining functionality.
   - **Managed Infrastructure**: The cloud provider manages resource allocation and scaling.
 
 ### Advantages of Serverless Computing
-
 - **Cost-Effective**: Pay only for the execution time and resources used.
 - **Simplified Operations**: Reduces the need for server management.
 - **Increased Productivity**: Developers can concentrate on code and functionality.
@@ -224,26 +218,23 @@ A cloud design pattern is a reusable solution to common problems encountered in 
 - **No Server Management**: No need to manage the underlying servers.
 
 ### Disadvantages of Serverless Computing
-
 - **Response Latency**: Potential for latency due to cold starts or resource allocation delays.
 - **Resource Limitations**: Not ideal for high-computing operations due to resource constraints.
 - **Security Responsibility**: Security responsibilities lie with the service provider, which might be a concern.
 - **Debugging Challenges**: Debugging serverless code can be more complex.
 
-## What is VPN?
 
+## Fault Tolerance
+Fault tolerance in cloud computing means that a system can keep working even if some parts fail. Think of it like a car with extra tires that automatically replace a flat tire while you’re driving, so you don’t have to stop. This ensures that services remain available and reliable, even when issues occur.
+
+Fault tolerance is the ability of a system to continue operating in the event of hardware or software failures. It involves designing systems with redundancy and failover mechanisms to mitigate the impact of failures on overall system performance and availability.
+
+## Disaster Recovery
+Disaster recovery refers to the process and procedures for recovering and restoring data, applications, and infrastructure in the event of a natural or man-made disaster. It includes backup strategies, replication of data across geographically diverse locations, and comprehensive recovery plans.
+
+## What is VPN?
 - **Definition**: VPN stands for Virtual Private Network. It is a technology that secures data transmission over a public network by creating a private network.
 - **Purpose**: VPN allows secure communication in cloud environments and can transform a public network into a private one.
-
-## Top Security Concerns in Cloud Computing
-
-1. **Data Breaches**: Unauthorized access to sensitive data.
-2. **Hijacking of Accounts**: Unauthorized access to user accounts.
-3. **Insider Threats**: Security risks from within the organization.
-4. **Malware Injection**: Introduction of malicious software.
-5. **Abuse of Cloud Services**: Misuse of cloud resources.
-6. **Insecure APIs**: Vulnerabilities in application programming interfaces.
-
 
 
 ## Introduction to Azure
@@ -265,12 +256,10 @@ Azure is Microsoft's cloud platform, allowing you to use powerful computers over
 - **Developer Productivity**: Azure offers a comprehensive set of development tools, including Visual Studio, Azure DevOps, and GitHub integration, enabling developers to build, deploy, and manage applications efficiently.
 
 ### Drawbacks
-
 - **Complexity**: Learning curve due to vast features and services.
 - **Cost Management**: Monitoring costs and optimizing usage can be challenging.
 
 ### Use Case
-
 Both start-ups and large companies use Azure to build and run their applications because it can easily grow with their needs.
 
 ---
@@ -280,33 +269,25 @@ Both start-ups and large companies use Azure to build and run their applications
 ### Infrastructure as a Service (IaaS)
 
 #### Definition
-
 IaaS provides virtualized computing resources over the internet. Users rent virtual machines (VMs), storage, and networking, managing operating systems and applications hosted on the infrastructure.
 
 #### Examples
-
 - **Virtual Machines (VMs)**: Renting VMs to run applications and manage operating systems, akin to renting a computer in the cloud.
 - **Azure Blob Storage**: Storing unstructured data like documents, images, and videos, similar to using a digital storage unit.
 
 ### Platform as a Service (PaaS)
-
 #### Definition
-
 PaaS provides a platform for developers to build, deploy, and manage applications without managing underlying infrastructure. Developers focus on coding and deploying applications, while Azure manages the rest.
 
 #### Examples
-
 - **Azure App Service**: Hosting web applications and APIs with built-in scaling and load balancing capabilities.
 - **Azure SQL Database**: Managed relational database service, handling backups, patching, and high availability.
 
 ### Software as a Service (SaaS)
-
 #### Definition
-
 SaaS delivers software applications over the internet on a subscription basis. Users access applications via a web browser without worrying about installation, maintenance, or infrastructure.
 
 #### Examples
-
 - **Microsoft 365**: Suite of productivity applications like Word, Excel, and Outlook accessible through a web browser.
 - **Salesforce**: CRM software accessed online for managing customer relationships.
 
@@ -315,7 +296,6 @@ SaaS delivers software applications over the internet on a subscription basis. U
 ## Creating an Account with Azure
 
 ### Process
-
 To get started with Azure:
 
 1. Sign up for an Azure account via the [Azure portal](https://portal.azure.com) or Microsoft's website.
@@ -392,15 +372,9 @@ Now let us say you have a product company and it is growing very well after a ce
 **Benefits of Management group**
 using Management group we can manage company(Management group) level cost and azure policy(like change wallpaper or change password).
 
-### Azure Resource Manager (ARM)
-- **Definition**: Management layer for deploying and managing Azure resources.
-- **Benefits**: Simplifies resource deployment, ensures consistent management.
-- **Drawbacks**: Learning curve for complex deployments.
-
 ---
 
 ## Components of Azure Architecture
-
 ### Data centres
 A data center is like a big, secure building full of powerful computers and storage devices. It keeps all kinds of information safe and available so that people and businesses can access it whenever they need it. 
 
@@ -427,6 +401,12 @@ Azure provides a wide range of services that users can integrate into their appl
 
 **Example**: Services in Azure are like tools in a toolbox. Just as a carpenter uses different tools to build a house, developers use Azure services to build and maintain their digital applications efficiently.
 
+---
+
+### Azure Resource Manager (ARM)
+- **Definition**: Management layer for deploying and managing Azure resources.
+- **Benefits**: Simplifies resource deployment, ensures consistent management.
+- **Drawbacks**: Learning curve for complex deployments.
 ---
 
 ## There are multiple ways to connect with Azure:
