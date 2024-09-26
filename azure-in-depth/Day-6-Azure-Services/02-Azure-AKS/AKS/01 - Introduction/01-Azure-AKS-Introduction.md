@@ -1,18 +1,17 @@
 # Azure Kubernetes Service (AKS)
 Azure Kubernetes Service (AKS) is a managed Kubernetes container orchestration service provided by Microsoft Azure. It simplifies deploying, managing, and scaling containerized applications using Kubernetes.
 
-AKS is highly available, secure and fully managed kubernates service, as on today it is available in 36 regions and growing daya by day, so if we will copare with other cloud AKS is available in heighest number of regions.
+AKS is highly available, secure and fully managed kubernates service, as on today it is available in almost 36 regions and growing day by day, so if we will copare with other cloud AKS is available in heighest number of regions.
 
 AKS is able to run any type of workloads:-
-  Windows based application .net application
-  Linux supported application like Java, dotnet core, nodeJS
+  Windows based and Linux supported based application like Java, dotnet core, nodeJS
   IOT device deployment and management on demand
   Machine learing model training with AKS
 
 ## AKS Architecture
 Azure Kubernetes Service (AKS) architecture consists of several key components that work together to manage and orchestrate containerized applications:
 
-### 1. Kubernetes Cluster
+## Kubernetes Cluster
    - **Description:**
    
    A Kubernetes cluster includes a control plane and worker nodes or node pools. The control plane is managed by Azure and includes components like the API server, scheduler, and ETCD. 
@@ -21,36 +20,14 @@ Azure Kubernetes Service (AKS) architecture consists of several key components t
    - **Architecture:** 
      - **Control Plane:** Managed by Azure, Handles API requests, schedules workloads, and maintains cluster state.
 
-
-     - **Worker Nodes:** Virtual machines that execute the containerized workloads. They are part of one or more node pools.
-
+     - **Worker Nodes or node pool:** Virtual machines that execute the containerized workloads. They are part of one or more node pools.
 
 
    - **Use Case:** A company wants to deploy a microservices-based application. AKS provides a Kubernetes cluster where each microservice runs in its own pod on the worker nodes.
    - **Billing Details:** Charges based on the underlying VM sizes and the number of worker nodes. The control plane is provided at no additional cost.
-   - **Commands:**
-     ```bash
-     # Create an AKS cluster
-     az aks create --resource-group <ResourceGroupName> --name <ClusterName> --node-count 1 --enable-addons monitoring --generate-ssh-keys
-     
-     # Get cluster credentials
-     az aks get-credentials --resource-group <ResourceGroupName> --name <ClusterName>
-     ```
 
-### 2. Node Pools
-   - **Description:** Groups of virtual machines (VMs) in a Kubernetes cluster. Each node pool can have different VM sizes, operating systems, and scaling rules.
-   - **Architecture:** 
-     - **Primary Node Pool:** Default node pool where most workloads run.
-     - **Additional Node Pools:** Can be configured for specialized workloads (e.g., GPU-enabled nodes for high-performance computing).
-   - **Use Case:** An organization has both general-purpose and high-performance workloads. They create separate node pools for each type, optimizing cost and performance.
-   - **Billing Details:** Costs depend on the VM sizes and the number of nodes in each pool. Additional charges for specialized VMs like GPU-enabled instances.
-   - **Commands:**
-     ```bash
-     # Add a new node pool
-     az aks nodepool add --resource-group <ResourceGroupName> --cluster-name <ClusterName> --name <NodePoolName> --node-count 2 --node-vm-size <VMSize>
-     ```
 
-### 3. Pods
+### 2. Pods
    - **Description:** The smallest deployable units in Kubernetes, encapsulating one or more containers. Pods share networking and storage resources.
    - **Architecture:** 
      - **Single Container Pod:** Runs a single container.
@@ -71,7 +48,41 @@ Azure Kubernetes Service (AKS) architecture consists of several key components t
          - containerPort: 80
      ```
 
-### 4. Services
+2. ### Deployments
+**Description:** Deployments manage the deployment and scaling of applications. They enable rolling updates and rollbacks by managing ReplicaSets.
+
+**Architecture:**
+- **Deployment:** Defines the desired state for Pods and ReplicaSets.
+- **ReplicaSets:** Ensured by Deployments to maintain the specified number of Pod replicas.
+
+**Use Case:** Rolling out new versions of applications with zero downtime.
+
+**Billing Details:** Costs based on resources used by Pods and ReplicaSets.
+
+**YAML Code:**
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+        ports:
+        - containerPort: 80
+```
+
+### 3. Services
    - **Description:** Define a set of pods and provide stable access endpoints (IP addresses and DNS names). Services manage network access to pods.
    - **Architecture:** 
      - **ClusterIP Service:** Exposes the service internally within the cluster.
@@ -94,6 +105,101 @@ Azure Kubernetes Service (AKS) architecture consists of several key components t
            port: 80
            targetPort: 80
      ```
+
+### 4. ReplicaSets
+
+**Description:**  
+A `ReplicaSet` ensures that a specified number of pod replicas are running at any given time. It is typically managed by a `Deployment` to handle scaling and updates, but it can be used independently.
+
+**Architecture:**
+- **Selector:** Determines which Pods are managed by the ReplicaSet.
+- **Replicas:** The desired number of Pod replicas to be maintained.
+
+**Use Case:**  
+Maintaining a specified number of Pods to ensure high availability and redundancy.
+
+**Billing Details:**  
+Costs are associated with the compute resources used by the Pods managed by the ReplicaSet.
+
+**YAML Code:**
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+        ports:
+        - containerPort: 80
+```
+- **replicas:** Specifies the number of Pods to maintain.
+- **selector:** Defines the labels that identify the Pods managed by this ReplicaSet.
+- **template:** The Pod template used to create Pods.
+
+## StatefulSets
+
+**Description:**  
+A `StatefulSet` is a Kubernetes resource that manages the deployment and scaling of stateful applications. It ensures that each Pod in the set has a unique, stable identity and that storage persists across rescheduling.
+
+**Architecture:**
+- **Identity:** Each Pod is given a unique and stable network identity, which is maintained even if the Pod is rescheduled.
+- **Persistence:** Provides persistent storage for Pods through PersistentVolumeClaims, ensuring that data remains consistent across Pod restarts.
+
+**Use Case:**  
+`StatefulSets` are used for applications that require stable, unique network identities and persistent storage. Typical use cases include databases and other stateful applications where data consistency and identity are crucial.
+
+**Billing Details:**  
+Costs associated with `StatefulSets` include:
+- Compute resources for running Pods.
+- Storage costs for PersistentVolumes.
+
+**YAML Code:**
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: my-statefulset
+spec:
+  serviceName: "my-service"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+        ports:
+        - containerPort: 80
+  volumeClaimTemplates:
+  - metadata:
+      name: my-pvc
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
+```
+- **serviceName:** The name of the Service that governs the Pods created by the StatefulSet. This Service provides network identity to the Pods.
+- **replicas:** Specifies the number of Pod replicas to maintain.
+- **selector:** Defines the labels that the StatefulSet uses to identify Pods.
+- **template:** The Pod template used to create Pods. It specifies the container image and ports.
+- **volumeClaimTemplates:** Defines the PersistentVolumeClaims for storage. Each Pod will get its own PersistentVolume based on these claims.
 
 ### 5. Ingress Controllers
    - **Description:** Manage external access to services, typically HTTP or HTTPS traffic. Ingress Controllers provide features like SSL termination and URL-based routing.
@@ -211,22 +317,3 @@ Azure Kubernetes Service (AKS) architecture consists of several key components t
      # Uninstall a Helm Chart
      helm uninstall my-release
      ```
-
-## Billing Details
-
-### Cost Factors
-
-1. **Cluster Costs:** Charges are based on the virtual machines (VMs) used for worker nodes. The control plane is managed by Azure and incurs no additional cost.
-2. **Node Pools:** Costs depend on the number and size of VMs in each node pool. Specialized VMs like GPU-enabled instances incur higher costs.
-3. **Storage:** Charges for persistent storage used by applications and data, such as SSDs and standard storage.
-4. **Networking:** Costs for outbound data transfer, load balancers, and public IP addresses.
-5. **Additional Services:** Charges for additional features like Azure Monitor, Application Insights, and Azure Container Registry.
-
-### Pricing Tiers
-
-- **Basic Pricing:** Includes standard AKS cluster costs and virtual machine pricing.
-- **Advanced Features:** Additional charges for features like Azure Monitor and Azure Security Centre.
-
-For detailed and up-to-date pricing information, refer to the [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/) and the [Azure AKS pricing page](https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/).
-
-This README provides a thorough overview of Azure Kubernetes Service (AKS), including its components, architecture, use cases, billing details, and relevant commands and YAML code. It serves as a comprehensive guide for understanding and managing AKS in Azure environments.
