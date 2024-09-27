@@ -18,6 +18,24 @@ Azure Storage is a cloud-based storage solution provided by Microsoft Azure. It 
 Azure Blob Storage is a service that allows you to store and serve large amounts of unstructured data, such as text or binary files. It is commonly used for storing and serving static website content. 
 For example, you can store HTML, CSS, JavaScript, and image files for a website in Blob Storage and serve them directly to users.
 
+## Blob Containers & Categories
+### Containers
+Blobs are used to store unstructured data like unmanaged disks, text files or binary data.
+We can create multiple blobs under one container and multiple containers under one storage account.
+
+### Blob storage Categories
+We have three categories in blob
+
+1) **Block Blob**
+when we store any file, video and image it will be saved as "Block Blob"
+It store text and binary data, Block blob are block of data that can be managed individually.
+
+2) **Page Blob**
+It store random access files up to 8 TB in size. Page blobs stores Virtual hard drive (VHD) files and serve as disks for virtual machines.
+
+3) **Append Blob**
+Append blob are made up of blocks like block blobs, but are optimized for append operations. Append blobs are ideal for scenarios such as logging data from VM.
+
 ## File Storage
 Azure File Storage provides a fully managed file share in the cloud. It allows you to create file shares that can be accessed from multiple virtual machines or on-premises servers. These files can be accessed by using the standard server message block (SMB) protocol. This makes it easy to share files between different applications and environments.
 
@@ -125,25 +143,6 @@ When selecting a performance tier, consider the following factors:
 - **Cost**: Balance the storage and access costs based on your data usage patterns.
 
 By choosing the appropriate performance tier, you can optimize your storage costs while ensuring that your data is available when you need it.
-
-
-## Blob Containers & Categories
-### Containers
-Blobs are used to store unstructured data like unmanaged disks, text files or binary data.
-We can create multiple blobs under one container and multiple containers under one storage account.
-
-### Blob storage Categories
-We have three categories in blob
-
-1) **Block Blob**
-when we store any file, video and image it will be saved as "Block Blob"
-It store text and binary data, Block blob are block of data that can be managed individually.
-
-2) **Page Blob**
-It store random access files up to 8 TB in size. Page blobs stores Virtual hard drive (VHD) files and serve as disks for virtual machines.
-
-3) **Append Blob**
-Append blob are made up of blocks like block blobs, but are optimized for append operations. Append blobs are ideal for scenarios such as logging data from VM.
 
 
 ## Storage Replication
