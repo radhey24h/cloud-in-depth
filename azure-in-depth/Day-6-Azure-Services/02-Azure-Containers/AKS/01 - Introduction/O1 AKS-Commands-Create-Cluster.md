@@ -7,7 +7,15 @@ This guide provides a step-by-step process for selecting an Azure subscription, 
 ## Prerequisites
 
 - Azure CLI installed on your machine.
-- A valid Azure account with the necessary permissions to create resources.
+- A valid Azure account (https://portal.azure.com) with the necessary permissions to create resources.
+
+- Install Azure CLI
+If you haven’t installed Azure CLI, download it from the official Azure CLI installation page https://learn.microsoft.com/en-us/cli/azure/install-azure-cli .
+- Verify Installation
+After installation, verify it by opening a command prompt or terminal and running:
+```bash
+az --version
+```
 
 ## Steps to Create an AKS Cluster
 

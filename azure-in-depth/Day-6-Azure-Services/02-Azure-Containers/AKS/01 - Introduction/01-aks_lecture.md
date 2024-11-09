@@ -9,7 +9,8 @@ Welcome everyone to today's session on Azure Kubernetes Service (AKS) architectu
 
 ### 2.1 AKS Control Plane
 
-When we talk about Kubernetes architecture, the core of it involves the **control plane** and **worker nodes**. Let's start with the control plane, which is the brain of our Kubernetes cluster. In AKS, Azure manages the control plane for us. This includes critical components like the API Server, `etcd`, Controller Manager, and the Scheduler.
+When we talk about Kubernetes architecture, the core of it involves the **control plane** and **worker nodes**. Let's start with the control plane, which is the brain of our Kubernetes cluster. 
+In AKS, Azure manages the control plane for us. This includes critical components like the API Server, `etcd`, Controller Manager, and the Scheduler.
 
 The control plane in AKS is responsible for managing the Kubernetes cluster, orchestrating workloads, and maintaining the desired state of the cluster. In AKS, the control plane is managed by Azure, abstracting away much of the complexity of setting up and maintaining the Kubernetes master components. Here are the key components and their roles:
 
