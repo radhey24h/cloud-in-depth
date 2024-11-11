@@ -85,9 +85,13 @@ Note: Ensure jq is installed on your system for parsing JSON in the shell. You c
 
 ### Step 6: Create the AKS Cluster
 With the variables set, you can now create the AKS cluster:
-```bash
-az aks create --resource-group aks-rg1 --name aksdemo1 --location eastus --node-count 1 --enable-addons monitoring --enable-cluster-autoscaler --min-count 1 --max-count 5 --node-vm-size Standard_D2pds_v6 --kubernetes-version $LATEST_VERSION --network-plugin azure --service-principal $APP_ID --client-secret $CLIENT_SECRET --zones 1 2 3 --enable-private-cluster --generate-ssh-keys
-  ```
+``` bash
+az aks create --resource-group aks-rg1 --name aksdemo1 --location eastus --node-count 1 --enable-addons monitoring --enable-cluster-autoscaler --min-count 1 --max-count 5 --node-vm-size Standard_D2pds_v6 --kubernetes-version $LATEST_VERSION --network-plugin azure --service-principal $APP_ID --client-secret $CLIENT_SECRET --zones 1 2 3 --generate-ssh-keys
+```
+
+``` bash
+az aks create --resource-group aks-rg1 --name aksdemo1 --location centralindia --node-count 3 --enable-addons monitoring --generate-ssh-keys --kubernetes-version $LATEST_VERSION --enable-cluster-autoscaler --min-count 1 --max-count 5
+```
 
 ### --enable-private-cluster
 This flag ensures that the API server's traffic is routed through a private IP address inside the Azure Virtual Network (VNet) and cannot be accessed over the public internet. Even if the --enable-private-cluster-publicFqdn option is enabled (as it was in your case), the traffic is still being routed through private endpoints.
